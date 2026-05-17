@@ -3,6 +3,7 @@
   flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }: {
     imports = [ # Include the results of the hardware scan.
       self.nixosModules.myMachineHardware
+      self.nixosModules.fonts
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -59,23 +60,6 @@
 
     # Configure console keymap
     console.keyMap = "us-acentos";
-
-    fonts = {
-      enableDefaultPackages = true;
-      fontconfig.enable = true;
-      packages = with pkgs; [
-        font-awesome
-        inconsolata
-        jetbrains-mono
-        source-code-pro
-        nerd-fonts.fira-code
-      ];
-      fontconfig.defaultFonts.monospace = [
-        "JetBrains Mono"
-        "Source Code Pro"
-        "Inconsolata"
-      ];
-    };
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
