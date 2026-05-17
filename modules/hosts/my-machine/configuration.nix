@@ -3,6 +3,8 @@
   flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }: {
     imports = [ # Include the results of the hardware scan.
       self.nixosModules.myMachineHardware
+
+      self.nixosModules.cli
       self.nixosModules.fonts
     ];
 
@@ -106,22 +108,15 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
 
-      bat
-      curl
+      arandr
       dunst
       emacs
-      fd
       ghostty
       git
-      htop
       i3status
-      jq
-      mc
       pandoc
       pavucontrol
-      ripgrep
       rofi
-      tree
       xmodmap
 
     ];
