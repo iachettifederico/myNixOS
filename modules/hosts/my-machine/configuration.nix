@@ -2,7 +2,7 @@
 
   flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }: {
     imports = [ # Include the results of the hardware scan.
-        self.nixosModules.myMachineHardware
+      self.nixosModules.myMachineHardware
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -46,6 +46,8 @@
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
+
+    services.xserver.windowManager.i3.enable = true;
 
     # Configure keymap in X11
     services.xserver.xkb = {
@@ -103,13 +105,17 @@
 
       bat
       curl
+      dunst
       emacs
       fd
       ghostty
       git
       htop
+      i3status
       jq
+      mc
       ripgrep
+      rofi
       tree
 
     ];
