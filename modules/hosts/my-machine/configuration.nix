@@ -12,7 +12,7 @@
     boot.loader.grub.device = "/dev/vda";
     boot.loader.grub.useOSProber = true;
 
-    networking.hostName = "nixos"; # Define your hostname.
+    networking.hostName = "my-machine"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
@@ -59,6 +59,23 @@
 
     # Configure console keymap
     console.keyMap = "us-acentos";
+
+    fonts = {
+      enableDefaultPackages = true;
+      fontconfig.enable = true;
+      packages = with pkgs; [
+        font-awesome
+        inconsolata
+        jetbrains-mono
+        source-code-pro
+        nerd-fonts.fira-code
+      ];
+      fontconfig.defaultFonts.monospace = [
+        "JetBrains Mono"
+        "Source Code Pro"
+        "Inconsolata"
+      ];
+    };
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
@@ -116,6 +133,7 @@
       i3status
       jq
       mc
+      pandoc
       pavucontrol
       ripgrep
       rofi
