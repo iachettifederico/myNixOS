@@ -116,9 +116,11 @@
       i3status
       jq
       mc
+      pavucontrol
       ripgrep
       rofi
       tree
+      xmodmap
 
     ];
 
