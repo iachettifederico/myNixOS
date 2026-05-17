@@ -6,6 +6,7 @@
 
       self.nixosModules.cli
       self.nixosModules.fonts
+      self.nixosModules.i3
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -109,15 +110,10 @@
     environment.systemPackages = with pkgs; [
 
       arandr
-      dunst
       emacs
       ghostty
       git
-      i3status
       pandoc
-      pavucontrol
-      rofi
-      xmodmap
 
     ];
 
