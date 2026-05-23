@@ -82,6 +82,14 @@
       ];
     };
 
+    users.users.sofi = {
+      isNormalUser = true;
+      description = "Sofi";
+      extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.zsh;
+      packages = with pkgs; [ ];
+    };
+
     # Install firefox.
     programs.firefox.enable = true;
 
