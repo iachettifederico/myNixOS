@@ -1,8 +1,8 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }: {
+  flake.nixosModules.tophConfiguration = { config, pkgs, ... }: {
     imports = [ # Include the results of the hardware scan.
-      self.nixosModules.myMachineHardware
+      self.nixosModules.tophHardware
 
       self.nixosModules.cli
       self.nixosModules.fonts
@@ -12,12 +12,22 @@
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Bootloader.
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/vda";
-    boot.loader.grub.useOSProber = true;
 
-    networking.hostName = "my-machine"; # Define your hostname.
+    # Bootloader.
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    services.xserver = {
+      enable = true;
+      displayManager.lightdm.enable = true;
+      windowManager.i3.enable = true;
+
+      xkb = {
+        layout = "us";
+        variant = "intl";
+      };
+    };
+
+    networking.hostName = "toph"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
@@ -26,6 +36,31 @@
 
     # Enable networking
     networking.networkmanager.enable = true;
+
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    services.xserver.videoDrivers = [
+      "modesetting"
+      "nvidia"
+    ];
+
+    hardware.nvidia = {
+      open = true;
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      nvidiaSettings = true;
+
+      prime = {
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+        intelBusId = "PCI:0@0:2:0";
+        nvidiaBusId = "PCI:1@0:0:0";
+      };
+    };
 
     # Set your time zone.
     time.timeZone = "America/Argentina/Cordoba";
@@ -43,23 +78,6 @@
       LC_PAPER = "es_AR.UTF-8";
       LC_TELEPHONE = "es_AR.UTF-8";
       LC_TIME = "es_AR.UTF-8";
-    };
-
-    # Enable the X11 windowing system.
-    services.xserver.enable = true;
-
-    # Enable the GNOME Desktop Environment.
-    services.displayManager.gdm.enable = true;
-    services.displayManager.defaultSession = "none+i3";
-    services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = "fedex";
-    services.desktopManager.gnome.enable = true;
-    services.xserver.windowManager.i3.enable = true;
-
-    # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "intl";
     };
 
     # Configure console keymap
