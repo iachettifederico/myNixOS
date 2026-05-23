@@ -36,6 +36,7 @@ Important locations:
 - `modules/features/`: reusable feature modules extracted from host config
 - `azula-dendritic-migration-plan.md`: active migration plan
 - `azula-current-behavior.md`: captured baseline from the legacy `azula` config
+- `toph-graphics-progress.md`: host-specific notes for the current `toph` graphics bring-up
 
 ## Build
 

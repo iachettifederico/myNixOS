@@ -44,6 +44,23 @@
       enable32Bit = true;
     };
 
+    services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.nvidia = {
+      # Hybrid laptop: keep the desktop on Intel and use NVIDIA on demand.
+      open = false;
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      nvidiaSettings = true;
+
+      prime = {
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+
     # Set your time zone.
     time.timeZone = "America/Argentina/Cordoba";
 
