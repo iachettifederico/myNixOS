@@ -16,19 +16,6 @@
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    services.xserver = {
-      enable = true;
-      displayManager.lightdm.enable = true;
-      windowManager.i3.enable = true;
-
-      xkb = {
-        layout = "us";
-        variant = "intl";
-      };
-    };
-
-    services.displayManager.defaultSession = "none+i3";
-
     networking.hostName = "toph"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

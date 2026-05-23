@@ -15,6 +15,11 @@
       fsType = "ext4";
       };
 
+    fileSystems."/home/fedex/azula" = {
+      device = "azula";
+      fsType = "virtiofs";
+    };
+
     swapDevices = [ ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
