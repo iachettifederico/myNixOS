@@ -6,6 +6,7 @@
 
       self.nixosModules.cli
       self.nixosModules.fonts
+      self.nixosModules.openssh
       self.nixosModules.i3
       self.nixosModules.opencode
     ];
@@ -110,9 +111,6 @@
     # };
 
     # List services that you want to enable:
-
-    # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
 
     # Open ports in the firewall.
     networking.firewall.allowedTCPPorts = [ 22 ];
