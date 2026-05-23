@@ -27,6 +27,8 @@
       };
     };
 
+    services.displayManager.defaultSession = "none+i3";
+
     networking.hostName = "toph"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -40,26 +42,6 @@
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
-    };
-
-    services.xserver.videoDrivers = [
-      "modesetting"
-      "nvidia"
-    ];
-
-    hardware.nvidia = {
-      open = true;
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      nvidiaSettings = true;
-
-      prime = {
-        offload.enable = true;
-        offload.enableOffloadCmd = true;
-        intelBusId = "PCI:0@0:2:0";
-        nvidiaBusId = "PCI:1@0:0:0";
-      };
     };
 
     # Set your time zone.
@@ -114,6 +96,14 @@
       packages = with pkgs; [
         #  thunderbird
       ];
+    };
+
+    users.users.sofi = {
+      isNormalUser = true;
+      description = "Sofi";
+      extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.zsh;
+      packages = with pkgs; [ ];
     };
 
     # Install firefox.
