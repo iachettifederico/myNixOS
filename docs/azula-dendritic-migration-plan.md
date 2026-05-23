@@ -3,7 +3,7 @@
 This document records the decisions we made for migrating the legacy config in `~/nixos-flakes` into the current working directory `~/myNixOS`.
 
 The immediate focus is **a VM-first migration path for `azula` using `my-machine` as the proving host**.
-We are deliberately not migrating `toph` yet, but we want the structure we create now to make `toph` easy to add next.
+`toph` has now been added as a real dendritic host, but the main migration target remains `azula`.
 
 ## Goal
 
@@ -33,6 +33,8 @@ Working agreement:
 - the assistant explains the next step explicitly
 - the assistant maintains this plan file as the source of truth
 - each step should be small enough to verify before moving on
+- make one reviewable change at a time before starting the next one
+- use subagents for low-value, high-effort work when they are the best fit for the task
 
 Current execution rule:
 
@@ -56,6 +58,7 @@ Current next action:
 - keep the existing thin `~/myNixOS/flake.nix`
 - use `modules/hosts/my-machine/` as the first proving host
 - keep growing `my-machine` toward a credible daily-work VM
+- keep `my-machine` aligned with the shared workstation shape already proven on `toph`
 - confirm the minimal base host is working with `ghostty`, `emacs`, and `zsh`
 - move the desktop stack one step closer to the real workflow
 - allow temporary manual user config where it speeds up testing
@@ -68,9 +71,22 @@ Current next action:
 - defer the `azula` host skeleton until the VM environment is close enough to real work
 - defer legacy `azula` inputs until the base system shape is working
 
+Current review queue for `my-machine`:
+
+1. extract the duplicated LightDM + X11 + `i3` session settings from `my-machine` and `toph` into `modules/features/desktop/i3.nix`
+2. verify that the shared `i3` module still evaluates cleanly for both hosts
+3. extract the next obvious shared workstation module only after step 1 is reviewed
+4. move inline user definitions toward `modules/users/` only after the workstation feature boundaries are clearer
+
+Current verified progress for `my-machine`:
+
+- the shared `i3` desktop session settings were extracted into `modules/features/desktop/i3.nix`
+- `sudo nixos-rebuild switch --flake .#myMachine` succeeded after that extraction
+- the VM shared folder mount for `azula` was added in `modules/hosts/my-machine/hardware.nix`
+
 Current baseline artifact:
 
-- `~/myNixOS/azula-current-behavior.md`
+- `~/myNixOS/docs/azula-current-behavior.md`
 
 ## Decisions Already Made
 
@@ -91,8 +107,7 @@ The current migration target is `azula`, but the structural migration should be 
 
 We are intentionally deferring:
 
-- `toph`
-- any additional future machines
+- any additional future machines after `toph`
 - broader cleanup that is not required for `azula`
 
 That means the practical scope is:
@@ -100,6 +115,7 @@ That means the practical scope is:
 - build the dendritic layout
 - stand it up first on a VM host
 - use that VM host to validate the shared structure
+- keep `toph` as a second real host that helps prove shared feature extractions
 - then add `azula` on the same base with its real hardware, NVIDIA, filesystems, and host-specific details
 
 ### 3. User model
@@ -318,7 +334,7 @@ Why:
 Status:
 
 - completed
-- baseline recorded in `~/myNixOS/azula-current-behavior.md`
+- baseline recorded in `~/myNixOS/docs/azula-current-behavior.md`
 - priorities added so we know what must be preserved first during the structural move
 
 #### Step 2. Create a thin top-level `flake.nix`
@@ -408,6 +424,8 @@ Current progress on the tutorial path:
 - rebuilding taught an important flake rule: new module files must be tracked by git to be visible to flake evaluation
 - `cli` was successfully extracted into `modules/features/cli.nix`
 - `my-machine` now imports `cli` instead of owning those base CLI packages directly
+- `my-machine` was aligned with the newer shared `toph` workstation shape while keeping VM-specific boot and hardware settings
+- shared alignment now includes `pkgs-master` specialArgs, `opencode`, LightDM + `i3`, and the extra `sofi` user
 - old generations are intentionally being kept for now during active iteration
 - this confirms the basic host-module path is working
 - `azula` remains deferred until `my-machine` is useful enough for real work

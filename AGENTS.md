@@ -4,12 +4,12 @@
 
 - This repo is the new NixOS configuration being built in `~/myNixOS`.
 - `~/nixos-flakes` is the legacy source being migrated from; do not treat it as the active config tree.
-- Current migration strategy is VM-first: `my-machine` is the proving host, and `azula` stays deferred until the VM is close to a real daily-work environment.
+- Current migration strategy is VM-first: `my-machine` is the proving host, `toph` is already using the dendritic structure, and `azula` stays deferred until the VM is close to a real daily-work environment.
 
 ## Source Of Truth
 
-- Read `azula-dendritic-migration-plan.md` before making structural changes. It is the maintained migration plan for this repo.
-- Read `azula-current-behavior.md` when porting behavior from the legacy `azula` config.
+- Read `docs/azula-dendritic-migration-plan.md` before making structural changes. It is the maintained migration plan for this repo.
+- Read `docs/azula-current-behavior.md` when porting behavior from the legacy `azula` config.
 
 ## Flake Structure
 
@@ -20,11 +20,14 @@
 
 ## Current Architecture
 
-- Active host: `modules/hosts/my-machine/`
+- Active hosts:
+  - `modules/hosts/my-machine/`
+  - `modules/hosts/toph/`
 - Extracted reusable features currently include:
   - `modules/features/fonts.nix`
   - `modules/features/cli.nix`
   - `modules/features/desktop/i3.nix`
+  - `modules/features/ai/opencode.nix`
 - `modules/features/niri.nix` is a different pattern: it exports a wrapped package via `perSystem`, not a reusable NixOS module.
 
 ## Naming Conventions
@@ -36,6 +39,7 @@
 ## Build And Verification
 
 - Primary rebuild command for the VM host: `sudo nixos-rebuild switch --flake .#myMachine`
+- Current laptop rebuild command: `sudo nixos-rebuild switch --flake .#toph`
 - Useful quick check for exported modules: `nix eval .#nixosModules --apply builtins.attrNames`
 
 ## Critical Flake Gotcha
@@ -47,4 +51,5 @@
 
 - Prefer small extractions from host files into feature modules instead of continuing to grow a single host configuration.
 - Keep `my-machine` usable while migrating; favor small, reversible steps.
+- `toph` is no longer deferred; keep its host-specific graphics configuration in `modules/hosts/toph/configuration.nix` unless the same pattern is proven elsewhere.
 - Delay Docker, Home Manager, and `azula` host bring-up until the shared VM structure is stable enough to do real work in it.
