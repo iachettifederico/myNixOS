@@ -7,6 +7,7 @@
       self.nixosModules.cli
       self.nixosModules.fonts
       self.nixosModules.pipewire
+      self.nixosModules.ruby
       self.nixosModules.openssh
       self.nixosModules.i3
       self.nixosModules.opencode
