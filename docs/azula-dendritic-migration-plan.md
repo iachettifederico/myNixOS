@@ -84,6 +84,43 @@ Current verified progress for `my-machine`:
 - `sudo nixos-rebuild switch --flake .#myMachine` succeeded after that extraction
 - the VM shared folder mount for `azula` was added in `modules/hosts/my-machine/hardware.nix`
 
+Current visual map:
+
+```mermaid
+flowchart TD
+  subgraph Current["Current architecture"]
+    F["flake.nix<br/>thin flake"] --> P["flake-parts + import-tree ./modules"]
+    P --> S["modules/parts.nix<br/>systems list"]
+    P --> FE["modules/features"]
+    P --> HO["modules/hosts"]
+
+    FE --> CLI["cli"]
+    FE --> FO["fonts"]
+    FE --> I3["desktop/i3"]
+    FE --> SSH["services/openssh"]
+    FE --> OC["ai/opencode"]
+    FE --> NI["niri<br/>perSystem package"]
+
+    HO --> MM["my-machine<br/>VM proving host"]
+    HO --> TO["toph<br/>real dendritic host"]
+
+    MM --> MMF["imports: hardware + shared features"]
+    TO --> TOF["imports: hardware + shared features + host-specific NVIDIA PRIME"]
+  end
+
+  subgraph Next["Next planned steps"]
+    N1["Keep growing my-machine toward a credible daily-work VM"]
+    N2["Extract the next clear shared workstation feature<br/>printing, then pipewire"]
+    N3["Add modules/hosts/azula once VM shape is proven"]
+    N4["Later introduce modules/users and then Home Manager"]
+
+    N1 --> N2 --> N3 --> N4
+  end
+
+  MM -. proves shared structure .-> N1
+  TO -. helps validate extractions .-> N2
+```
+
 Current baseline artifact:
 
 - `~/myNixOS/docs/azula-current-behavior.md`
