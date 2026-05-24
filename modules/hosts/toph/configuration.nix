@@ -6,14 +6,13 @@
 
       self.nixosModules.cli
       self.nixosModules.fonts
-      self.nixosModules.openssh
       self.nixosModules.pipewire
+      self.nixosModules.openssh
       self.nixosModules.i3
       self.nixosModules.opencode
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
@@ -73,7 +72,6 @@
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
-
 
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;

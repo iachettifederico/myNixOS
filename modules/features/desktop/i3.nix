@@ -17,7 +17,6 @@
       arandr
       dunst
       i3status
-      pavucontrol
       rofi
       xmodmap
     ];
