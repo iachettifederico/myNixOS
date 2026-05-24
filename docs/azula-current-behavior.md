@@ -489,6 +489,34 @@ Likely future home:
 - mostly host config initially
 - later split between host, user, and feature modules
 
+## Kalkomey Work Baseline
+
+Priority: `P0`
+
+Source: `~/nixos-flakes/azula/configuration.nix`
+
+Current behavior:
+
+- the legacy work and development section is explicitly labeled `# Kalkomey`
+- that section currently installs:
+  - `awscli2`
+  - `openvpn`
+  - `vault`
+  - `nomad`
+- the surrounding development workflow also depends on the legacy Ruby and npm support modules and the flake-level Emacs and Ruby wiring
+
+Migration notes:
+
+- future migration discussions should refer to this as the `Kalkomey` baseline
+- the first proving pass should preserve this behavior on `my-machine` via a small feature module, with minimal refactoring
+- `azula` should only receive this work setup after it has already been exercised safely in the VM
+- the isolated future Linux user for this work context will be named `ke`, but that user does not belong in the first structural pass
+
+Likely future home:
+
+- `modules/features/dev/kalkomey.nix` for the package set
+- later host or user wiring for the isolated `ke` account
+
 ## Docker And Container Behavior
 
 Priority: `P0`

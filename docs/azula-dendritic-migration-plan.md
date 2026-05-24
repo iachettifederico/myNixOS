@@ -47,42 +47,41 @@ Current execution rule:
 
 Current phase:
 
-- Phase 1: Structural Migration On A VM Host First
+- Phase 1: Prove The Full Work Setup In `my-machine`
 
-Current step:
+Current checkpoint:
 
-- Step 2. Get `my-machine` working as a minimal base host
+- the VM remains the safety gate for all work-critical migration work
+- the legacy `# Kalkomey` section is the work and development baseline to preserve
+- `azula` must not be touched until the VM is good enough for the real work setup
 
 Current next action:
 
 - keep the existing thin `~/myNixOS/flake.nix`
-- use `modules/hosts/my-machine/` as the first proving host
-- keep growing `my-machine` toward a credible daily-work VM
-- keep `my-machine` aligned with the shared workstation shape already proven on `toph`
-- confirm the minimal base host is working with `ghostty`, `emacs`, and `zsh`
-- move the desktop stack one step closer to the real workflow
-- allow temporary manual user config where it speeds up testing
-- begin extracting the parts of `my-machine` that already have a clear home
-- continue extracting obvious shared features out of `my-machine`
-- next extraction candidate: desktop/i3 tools
-- prefer small feature modules over continuing to grow one host file
-- defer Docker until after we have practiced one or two extractions cleanly
-- keep expanding in small, teachable steps
-- defer the `azula` host skeleton until the VM environment is close enough to real work
-- defer legacy `azula` inputs until the base system shape is working
+- add the missing legacy flake inputs and wiring for `nixpkgs-ruby` and `emacs-overlay`
+- preserve the legacy flake-level behavior for `ruby-packages`, `pkgs-master`, filtered tree-sitter grammars, and `emacs-with-grammars`
+- create reusable dev feature modules for `ruby`, `npm`, and `Kalkomey`
+- import and validate those pieces on `my-machine`
+- regroup only after the VM can carry the work setup safely
 
 Current review queue for `my-machine`:
 
-1. extract the duplicated LightDM + X11 + `i3` session settings from `my-machine` and `toph` into `modules/features/desktop/i3.nix`
-2. verify that the shared `i3` module still evaluates cleanly for both hosts
-3. extract the next obvious shared workstation module only after step 1 is reviewed
-4. move inline user definitions toward `modules/users/` only after the workstation feature boundaries are clearer
+1. wire the legacy flake inputs into the current top-level flake without expanding the root structure
+2. copy the legacy Ruby and npm behavior into new feature modules with minimal refactoring
+3. isolate the `# Kalkomey` packages into a small dev feature module
+4. import those modules into `my-machine` and verify evaluation or rebuild behavior there
+5. regroup before creating `modules/hosts/azula/` or implementing the isolated work user
 
-Current verified progress for `my-machine`:
+Current verified progress:
 
 - the shared `i3` desktop session settings were extracted into `modules/features/desktop/i3.nix`
 - `sudo nixos-rebuild switch --flake .#myMachine` succeeded after that extraction
 - the VM shared folder mount for `azula` was added in `modules/hosts/my-machine/hardware.nix`
+- shared OpenSSH and PipeWire modules were extracted successfully
+- `pkgs-master` is already passed into `myMachine`
+- `toph` already matches the currently proven shared workstation shape closely enough that no immediate `toph` work is required
+- `azula` remains the migration target, but it should only be touched after the VM can safely carry the work setup
+- the future isolated Kalkomey Linux user name is `ke`, but that user should not be implemented in the first structural pass
 
 Current visual map:
 
@@ -109,10 +108,10 @@ flowchart TD
   end
 
   subgraph Next["Next planned steps"]
-    N1["Keep growing my-machine toward a credible daily-work VM"]
-    N2["Extract the next clear shared workstation feature<br/>printing, then pipewire"]
-    N3["Add modules/hosts/azula once VM shape is proven"]
-    N4["Later introduce modules/users and then Home Manager"]
+    N1["Wire legacy azula flake inputs<br/>nixpkgs-ruby + emacs-overlay"]
+    N2["Create dev feature modules<br/>ruby, npm, Kalkomey"]
+    N3["Prove the work setup on my-machine<br/>then regroup"]
+    N4["Only then port to azula<br/>and later add users and Home Manager"]
 
     N1 --> N2 --> N3 --> N4
   end
@@ -484,6 +483,11 @@ Why:
 - this gives `azula` a clean host boundary
 - it mirrors the pattern used in `~/myNixOS`
 
+Current execution note:
+
+- do not start this step until `my-machine` is carrying the work-critical setup safely
+- once we do start this step, stop after the host skeleton and regroup
+
 #### Step 7. Make `azula` build in the new structure before deeper extraction
 
 Keep most of the current host config intact at first if needed.
@@ -552,6 +556,12 @@ Why:
 - this creates the boundary we want before adding more users
 - it prepares the repo for `chini`, `sofi`, and `emma`
 
+Future user note:
+
+- the isolated Kalkomey or OpenCode Linux user will be named `ke`
+- defer that user until after the VM work setup is concrete and stable enough to discuss it clearly
+- when we pick up the `ke` work, explicitly discuss which Docker access model it needs and which browsers belong there, including `firefox`, `brave`, `firefox-devedition`, and any other development browsers
+
 #### Step 11. Have hosts import only the users they need
 
 For now:
@@ -608,16 +618,16 @@ Why:
 
 This is the practical sequence I recommend.
 
-1. Build the new structure directly in `~/myNixOS`
-2. Create a VM host in `modules/hosts/my-machine/`
-3. Validate the dendritic structure on the VM host
-4. Move `azula` into `modules/hosts/azula/`
-5. Preserve current behavior and make sure evaluation still works
-6. Extract only the clearest feature modules
-7. Create `modules/users/fedex/default.nix`
-8. Add Home Manager after the structural migration is stable
-9. Move `fedex` personal desktop/session config into Home Manager
-10. Add `toph` next, reusing what the VM host and `azula` proved out
+1. Add legacy `azula` flake inputs and package wiring to the current flake
+2. Create `modules/features/dev/ruby.nix`
+3. Create `modules/features/dev/npm.nix`
+4. Create `modules/features/dev/kalkomey.nix`
+5. Import and prove those pieces on `my-machine`
+6. Discuss and design the future `ke` user once the VM work setup is concrete enough
+7. Create `modules/hosts/azula/` only after the VM path is trusted
+8. Port host-specific `azula` behavior only after that checkpoint
+9. Add the isolated `ke` user later, once the host skeleton is stable
+10. Add Home Manager after the structural migration is stable
 
 ## What We Are Explicitly Avoiding
 
@@ -633,10 +643,9 @@ We are not trying to:
 Current recommendation:
 
 1. Focus only on `azula`
-2. Prove the new structure on a VM host before changing `azula`
-   using `my-machine` as the first host
-3. Match the `~/myNixOS` flake pattern exactly where practical
-4. Keep host, feature, and user boundaries separate
-5. Prepare for multiple users now
-6. Introduce Home Manager, but after the structural migration is stable
-7. Use the VM host plus `azula` as the template for bringing in `toph` next
+2. Treat `# Kalkomey` as the work and development baseline to preserve
+3. Use `my-machine` as the safety gate and prove the full work setup there before touching `azula`
+4. Match the `~/myNixOS` flake pattern exactly where practical
+5. Keep host, feature, and user boundaries separate
+6. Reserve the isolated work or OpenCode user name `ke` for a later step
+7. Introduce Home Manager only after the structural migration is stable
