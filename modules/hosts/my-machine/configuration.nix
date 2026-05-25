@@ -1,6 +1,40 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }: {
+  flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }:
+  let
+    keShell = pkgs.writeShellScript "ke-shell" ''
+      exec ${pkgs.sudo}/bin/sudo -u ke -H ${pkgs.zsh}/bin/zsh -l
+    '';
+
+    keEmacs = pkgs.writeShellScript "ke-emacs" ''
+      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.emacs}/bin/emacs "$@"
+    '';
+
+    keFirefox = pkgs.writeShellScript "ke-firefox" ''
+      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox}/bin/firefox "$@"
+    '';
+
+    keFirefoxDevedition = pkgs.writeShellScript "ke-firefox-devedition" ''
+      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox-devedition}/bin/firefox-devedition "$@"
+    '';
+
+    keGhostty = pkgs.writeShellScript "ke-ghostty" ''
+      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.ghostty}/bin/ghostty "$@"
+    '';
+
+    keRofi = pkgs.writeShellScript "ke-rofi" ''
+      cmd_dir=/home/fedex/bin/ke
+      choice=$(${pkgs.coreutils}/bin/printf '%s\n' \
+        ke-shell \
+        ke-emacs \
+        ke-firefox \
+        ke-firefox-devedition \
+        ke-ghostty | ${pkgs.rofi}/bin/rofi -dmenu -p ke)
+
+      test -n "$choice" || exit 0
+      exec "$cmd_dir/$choice"
+    '';
+  in {
     imports = [ # Include the results of the hardware scan.
       self.nixosModules.myMachineHardware
 
@@ -32,6 +66,10 @@
 
     # Enable networking
     networking.networkmanager.enable = true;
+
+    services.xserver.displayManager.sessionCommands = ''
+      ${pkgs.xhost}/bin/xhost +SI:localuser:ke >/dev/null
+    '';
 
     # Set your time zone.
     time.timeZone = "America/Argentina/Cordoba";
@@ -65,6 +103,10 @@
 
     programs.zsh.enable = true;
 
+    security.sudo.extraConfig = ''
+      fedex ALL=(ke) NOPASSWD:SETENV: ${pkgs.zsh}/bin/zsh, ${pkgs.emacs}/bin/emacs, ${pkgs.firefox}/bin/firefox, ${pkgs.firefox-devedition}/bin/firefox-devedition, ${pkgs.ghostty}/bin/ghostty
+    '';
+
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
@@ -74,11 +116,24 @@
 
       arandr
       emacs
+      firefox-devedition
       ghostty
       git
       pandoc
 
     ];
+
+    system.activationScripts.keLaunchers.text = ''
+      ${pkgs.coreutils}/bin/mkdir -p /home/fedex/bin/ke
+      ${pkgs.coreutils}/bin/chown fedex /home/fedex/bin /home/fedex/bin/ke
+
+      ${pkgs.coreutils}/bin/ln -sfn ${keShell} /home/fedex/bin/ke/ke-shell
+      ${pkgs.coreutils}/bin/ln -sfn ${keEmacs} /home/fedex/bin/ke/ke-emacs
+      ${pkgs.coreutils}/bin/ln -sfn ${keFirefox} /home/fedex/bin/ke/ke-firefox
+      ${pkgs.coreutils}/bin/ln -sfn ${keFirefoxDevedition} /home/fedex/bin/ke/ke-firefox-devedition
+      ${pkgs.coreutils}/bin/ln -sfn ${keGhostty} /home/fedex/bin/ke/ke-ghostty
+      ${pkgs.coreutils}/bin/ln -sfn ${keRofi} /home/fedex/bin/ke/ke-rofi
+    '';
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
