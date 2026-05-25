@@ -62,6 +62,7 @@ Current next action:
 - preserve the legacy flake-level behavior for `ruby-packages`, `pkgs-master`, filtered tree-sitter grammars, and `emacs-with-grammars`
 - create reusable dev feature modules for `ruby`, `npm`, and `Kalkomey`
 - import and validate those pieces on `my-machine`
+- start extracting concrete user modules so host files stop owning user definitions directly
 - regroup only after the VM can carry the work setup safely
 
 Current review queue for `my-machine`:
@@ -81,7 +82,12 @@ Current verified progress:
 - `pkgs-master` is already passed into `myMachine`
 - `toph` already matches the currently proven shared workstation shape closely enough that no immediate `toph` work is required
 - `azula` remains the migration target, but it should only be touched after the VM can safely carry the work setup
-- the future isolated Kalkomey Linux user name is `ke`, but that user should not be implemented in the first structural pass
+- `azula` currently needs the `fedex` and `ke` users
+- the concrete Kalkomey workspace for `ke` is `/home/ke/code/kalkomey`, migrated from the current `~/code/kalkomey` tree
+- `ke` is the work-isolated user boundary for `kelp` and `newt`, replacing the more generic `opencode-work` idea from `~/ai/opencode-buckets`
+- `kelp` currently needs Ruby `3.4.9`, Node `22.14.0`, `yarn`, and legacy `bower`
+- `newt` currently needs Ruby `2.7.6`, Node `10.4.0`, and legacy `bower`
+- the first `ke` extraction should create the user module boundary first; the full Kalkomey toolchain should follow as a separate step
 
 Current visual map:
 
@@ -168,6 +174,7 @@ That means the long-term model should support:
 Examples:
 
 - `fedex` uses `i3`
+- `ke` is the isolated Kalkomey work user that owns `/home/ke/code/kalkomey`
 - other users may not use `i3`
 - a machine should import only the users it needs
 
@@ -275,6 +282,7 @@ Long-term examples:
 - `modules/users/chini/default.nix`
 - `modules/users/sofi/default.nix`
 - `modules/users/emma/default.nix`
+- `modules/users/gimena/default.nix`
 
 Each host should import only the users it actually needs.
 
@@ -540,9 +548,9 @@ Why:
 
 ### Phase 4: Introduce User Boundaries
 
-#### Step 10. Create `modules/users/fedex/default.nix`
+#### Step 10. Create `modules/users/fedex/default.nix` and `modules/users/ke/default.nix`
 
-Start with `fedex`, because `azula` only needs that user right now.
+Start with `fedex` and `ke`, because `azula` currently needs both users.
 
 Initial responsibilities:
 
@@ -554,20 +562,21 @@ Initial responsibilities:
 Why:
 
 - this creates the boundary we want before adding more users
-- it prepares the repo for `chini`, `sofi`, and `emma`
+- it prepares the repo for `chini`, `sofi`, `emma`, and `gimena`
+- it creates the user boundary needed for the future `azula` host to carry both the desktop user and the isolated Kalkomey work user
 
 Future user note:
 
-- the isolated Kalkomey or OpenCode Linux user will be named `ke`
-- defer that user until after the VM work setup is concrete and stable enough to discuss it clearly
-- when we pick up the `ke` work, explicitly discuss which Docker access model it needs and which browsers belong there, including `firefox`, `brave`, `firefox-devedition`, and any other development browsers
+- keep the first `ke` module minimal while proving the VM path
+- add the concrete Kalkomey toolchain after the VM work setup is concrete and stable enough to discuss it clearly
+- when we pick up the deeper `ke` work, explicitly discuss which Docker access model it needs and which browsers belong there, including `firefox`, `brave`, `firefox-devedition`, and any other development browsers
 
 #### Step 11. Have hosts import only the users they need
 
 For now:
 
-- the VM host imports `fedex` if needed
-- `azula` imports `fedex`
+- the VM host imports `fedex` and `ke` as needed while proving the structure
+- `azula` imports `fedex` and `ke`
 
 Later examples:
 
@@ -608,7 +617,7 @@ Why:
 
 #### Step 14. Add future users when needed
 
-When `chini`, `sofi`, or `emma` are added, create their user modules and import them only on the machines that need them.
+When `chini`, `sofi`, `emma`, or `gimena` are added, create their user modules and import them only on the machines that need them.
 
 Why:
 
@@ -623,10 +632,10 @@ This is the practical sequence I recommend.
 3. Create `modules/features/dev/npm.nix`
 4. Create `modules/features/dev/kalkomey.nix`
 5. Import and prove those pieces on `my-machine`
-6. Discuss and design the future `ke` user once the VM work setup is concrete enough
+6. Extend the `ke` user with the concrete Kalkomey toolchain once the VM work setup is concrete enough
 7. Create `modules/hosts/azula/` only after the VM path is trusted
 8. Port host-specific `azula` behavior only after that checkpoint
-9. Add the isolated `ke` user later, once the host skeleton is stable
+9. Finish the isolated `ke` work environment later, once the host skeleton is stable
 10. Add Home Manager after the structural migration is stable
 
 ## What We Are Explicitly Avoiding
@@ -647,5 +656,5 @@ Current recommendation:
 3. Use `my-machine` as the safety gate and prove the full work setup there before touching `azula`
 4. Match the `~/myNixOS` flake pattern exactly where practical
 5. Keep host, feature, and user boundaries separate
-6. Reserve the isolated work or OpenCode user name `ke` for a later step
+6. Keep expanding the isolated work user `ke` only when the VM-first structure is stable enough to verify it safely
 7. Introduce Home Manager only after the structural migration is stable

@@ -10,6 +10,8 @@
       self.nixosModules.openssh
       self.nixosModules.i3
       self.nixosModules.opencode
+      self.nixosModules.fedex
+      self.nixosModules.sofi
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -75,25 +77,6 @@
 
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.fedex = {
-      isNormalUser = true;
-      description = "Federico M. Iachetti";
-      extraGroups = [ "networkmanager" "wheel" ];
-      shell = pkgs.zsh;
-      packages = with pkgs; [
-        #  thunderbird
-      ];
-    };
-
-    users.users.sofi = {
-      isNormalUser = true;
-      description = "Sofi";
-      extraGroups = [ "networkmanager" "wheel" ];
-      shell = pkgs.zsh;
-      packages = with pkgs; [ ];
-    };
 
     # Install firefox.
     programs.firefox.enable = true;
