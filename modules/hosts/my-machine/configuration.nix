@@ -2,24 +2,31 @@
 
   flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }:
   let
+    sudoBin = "/run/wrappers/bin/sudo";
+    keWorkspace = "/home/ke/kalkomey/repos/kelp";
+
     keShell = pkgs.writeShellScript "ke-shell" ''
-      exec ${pkgs.sudo}/bin/sudo -u ke -H ${pkgs.zsh}/bin/zsh -l
+      exec ${sudoBin} -u ke -H -- ${pkgs.zsh}/bin/zsh -lc 'cd ${keWorkspace} && exec ${pkgs.zsh}/bin/zsh -l'
+    '';
+
+    keShellGui = pkgs.writeShellScript "ke-shell-gui" ''
+      exec ${pkgs.ghostty}/bin/ghostty -e ${sudoBin} -u ke -H -- ${pkgs.zsh}/bin/zsh -lc 'cd ${keWorkspace} && exec ${pkgs.zsh}/bin/zsh -l'
     '';
 
     keEmacs = pkgs.writeShellScript "ke-emacs" ''
-      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.emacs}/bin/emacs "$@"
+      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.emacs}/bin/emacs "$@"
     '';
 
     keFirefox = pkgs.writeShellScript "ke-firefox" ''
-      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox}/bin/firefox "$@"
+      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox}/bin/firefox "$@"
     '';
 
     keFirefoxDevedition = pkgs.writeShellScript "ke-firefox-devedition" ''
-      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox-devedition}/bin/firefox-devedition "$@"
+      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox-devedition}/bin/firefox-devedition "$@"
     '';
 
     keGhostty = pkgs.writeShellScript "ke-ghostty" ''
-      exec ${pkgs.sudo}/bin/sudo --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.ghostty}/bin/ghostty "$@"
+      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.ghostty}/bin/ghostty "$@"
     '';
 
     keRofi = pkgs.writeShellScript "ke-rofi" ''
@@ -32,6 +39,11 @@
         ke-ghostty | ${pkgs.rofi}/bin/rofi -dmenu -p ke)
 
       test -n "$choice" || exit 0
+
+      if [ "$choice" = "ke-shell" ]; then
+        exec "$cmd_dir/ke-shell-gui"
+      fi
+
       exec "$cmd_dir/$choice"
     '';
   in {
@@ -128,6 +140,7 @@
       ${pkgs.coreutils}/bin/chown fedex /home/fedex/bin /home/fedex/bin/ke
 
       ${pkgs.coreutils}/bin/ln -sfn ${keShell} /home/fedex/bin/ke/ke-shell
+      ${pkgs.coreutils}/bin/ln -sfn ${keShellGui} /home/fedex/bin/ke/ke-shell-gui
       ${pkgs.coreutils}/bin/ln -sfn ${keEmacs} /home/fedex/bin/ke/ke-emacs
       ${pkgs.coreutils}/bin/ln -sfn ${keFirefox} /home/fedex/bin/ke/ke-firefox
       ${pkgs.coreutils}/bin/ln -sfn ${keFirefoxDevedition} /home/fedex/bin/ke/ke-firefox-devedition
