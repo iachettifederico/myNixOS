@@ -4,6 +4,7 @@
       bat
       curl
       fd
+      gh
       htop
       jq
       mc
