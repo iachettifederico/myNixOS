@@ -51,6 +51,7 @@
       self.nixosModules.myMachineHardware
 
       self.nixosModules.cli
+      self.nixosModules.emacs
       self.nixosModules.fonts
       self.nixosModules.pipewire
       self.nixosModules.ruby
@@ -131,11 +132,9 @@
     environment.systemPackages = with pkgs; [
 
       arandr
-      emacs
       firefox-devedition
       ghostty
       git
-      pandoc
 
     ];
 

@@ -5,6 +5,7 @@
       self.nixosModules.tophHardware
 
       self.nixosModules.cli
+      self.nixosModules.emacs
       self.nixosModules.fonts
       self.nixosModules.pipewire
       self.nixosModules.openssh
@@ -91,10 +92,8 @@
     environment.systemPackages = with pkgs; [
 
       arandr
-      emacs
       ghostty
       git
-      pandoc
 
     ];
 
