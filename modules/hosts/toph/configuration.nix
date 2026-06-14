@@ -117,6 +117,12 @@
 
     programs.zsh.enable = true;
 
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
@@ -127,6 +133,8 @@
       arandr
       ghostty
       git
+      blender
+      godot_4
 
     ];
 
