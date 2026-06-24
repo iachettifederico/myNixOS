@@ -62,7 +62,11 @@
       self.nixosModules.ke
     ];
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      cores = 1;
+      max-jobs = 1;
+    };
 
     # Bootloader.
     boot.loader.grub.enable = true;

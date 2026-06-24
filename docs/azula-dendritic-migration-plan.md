@@ -88,6 +88,8 @@ Current verified progress:
 - `kelp` currently needs Ruby `3.4.9`, Node `22.14.0`, `yarn`, and legacy `bower`
 - `newt` currently needs Ruby `2.7.6`, Node `10.4.0`, and legacy `bower`
 - the first `ke` extraction should create the user module boundary first; the full Kalkomey toolchain should follow as a separate step
+- `ke` now has the first Kalkomey user package slice on `my-machine`: `awscli2`, `nodejs_22`, `nomad`, `openvpn`, `vault`, `yarn`, and a local wrapper for legacy `bower@1.8.14`
+- `nomad` can exceed the VM's practical build resources during `checkPhase`; rebuilding with `sudo nixos-rebuild switch --flake .#myMachine --cores 1 --max-jobs 1` succeeded
 
 Current visual map:
 
