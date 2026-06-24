@@ -112,6 +112,16 @@
       packages = with pkgs; [ ];
     };
 
+    system.activationScripts.fixSofiHomePermissions.text = ''
+      if [ -d /home/sofi ]; then
+        chown -R sofi:users /home/sofi
+        chmod 700 /home/sofi
+        [ -f /home/sofi/.Xauthority ] && chmod 600 /home/sofi/.Xauthority
+      fi
+    '';
+
+    services.xserver.desktopManager.cinnamon.enable = true;
+
     # Install firefox.
     programs.firefox.enable = true;
 
