@@ -110,6 +110,7 @@ Current verified progress:
 - the remaining blocker for VM rebuild verification is that the current VM still prompts for sudo password over SSH until the VM-side sudo policy is updated or the first rebuild is run with elevated access
 - the workstation layer now also carries the legacy 1Password unfree predicate and a few missing dev packages (`git-lfs`, `rustc`, `python3Packages.weasyprint`)
 - the `ke` workflow is now smoke-tested on the VM: the launchers are present, the workdir was created manually at `/home/ke/code/kalkomey`, and the base tools resolve for the `ke` user
+- the VM host now also matches several reference `azula` details that were still drifting: exact `fedex` UID/GID and description, passwordless wheel sudo, IP forwarding, the systemd generator workaround, autologin, and the `xrandr` primary-display session command
 
 Current visual map:
 

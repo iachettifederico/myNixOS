@@ -1,7 +1,24 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }:
-  {
+  flake.nixosModules.myMachineConfiguration = { config, pkgs, lib, ... }:
+  let
+    systemdSystemGenerators = pkgs.runCommand "system-generators" {
+      preferLocalBuild = true;
+      packages = config.systemd.packages;
+    } ''
+      set -e
+      shopt -s nullglob
+      mkdir -p "$out"
+      for package in $packages
+      do
+        for hook in "$package"/lib/systemd/system-generators/*
+        do
+          ln -s "$hook" "$out/"
+        done
+      done
+      ${lib.concatStrings (lib.mapAttrsToList (name: target: "ln -s ${target} $out/${name};\n") config.systemd.generators)}
+    '';
+  in {
     imports = [ # Include the results of the hardware scan.
       self.nixosModules.myMachineHardware
 
@@ -44,6 +61,13 @@
     # Enable networking
     networking.networkmanager.enable = true;
 
+    services.xserver.displayManager.sessionCommands = ''
+      ${pkgs.xrandr}/bin/xrandr --output DP-0 --primary
+    '';
+
+    services.displayManager.autoLogin.enable = true;
+    services.displayManager.autoLogin.user = "fedex";
+
     # Set your time zone.
     time.timeZone = "America/Argentina/Cordoba";
 
@@ -82,10 +106,18 @@
     # List services that you want to enable:
 
     # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts = [ 22 ];
+    networking.firewall = {
+      allowedTCPPorts = [ 22 80 443 ];
+      interfaces."virbr0".allowedTCPPorts = [ 11434 ];
+    };
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
+
+    environment.etc."systemd/system-generators".source = lib.mkForce systemdSystemGenerators;
+
+    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+    boot.kernel.sysctl."net.ipv6.ip_forward" = 1;
 
     security.sudo.wheelNeedsPassword = false;
 
