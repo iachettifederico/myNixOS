@@ -58,11 +58,9 @@ Current checkpoint:
 Current next action:
 
 - keep the existing thin `~/myNixOS/flake.nix`
-- add the missing legacy flake inputs and wiring for `nixpkgs-ruby` and `emacs-overlay`
+- continue porting legacy `azula` workstation parity into reusable feature modules
 - preserve the legacy flake-level behavior for `ruby-packages`, `pkgs-master`, filtered tree-sitter grammars, and `emacs-with-grammars`
-- create reusable dev feature modules for `ruby`, `npm`, and `Kalkomey`
-- import and validate those pieces on `my-machine`
-- start extracting concrete user modules so host files stop owning user definitions directly
+- keep extracting concrete user and workstation boundaries so host files stop owning shared logic directly
 - regroup only after the VM can carry the work setup safely
 
 Current review queue for `my-machine`:
@@ -72,6 +70,21 @@ Current review queue for `my-machine`:
 3. isolate the `# Kalkomey` packages into a small dev feature module
 4. import those modules into `my-machine` and verify evaluation or rebuild behavior there
 5. regroup before creating `modules/hosts/azula/` or implementing the isolated work user
+
+Full parity backlog for the VM-first pass:
+
+- work/dev foundation
+  - `modules/features/dev/kalkomey.nix`
+  - `modules/features/dev/npm.nix`
+  - `modules/features/virtualisation/docker.nix`
+  - `ke` launchers under `/home/fedex/bin/ke`
+  - `ke` work root `~/code/kalkomey` without declarative repo creation
+- broad workstation packages
+  - desktop, terminal, browser, media, dev, and work packages from legacy `azula`
+  - keep hardware-tied packages out of the VM pass for now
+- VM-safe services/configuration
+  - minimal service parity first
+  - keep self-hosting and GPU-specific services deferred until the real `azula` host exists
 
 Current verified progress:
 
@@ -90,6 +103,12 @@ Current verified progress:
 - the first `ke` extraction should create the user module boundary first; the full Kalkomey toolchain should follow as a separate step
 - `ke` now has the first Kalkomey user package slice on `my-machine`: `awscli2`, `nodejs_22`, `nomad`, `openvpn`, `vault`, `yarn`, and a local wrapper for legacy `bower@1.8.14`
 - `nomad` can exceed the VM's practical build resources during `checkPhase`; rebuilding with `sudo nixos-rebuild switch --flake .#myMachine --cores 1 --max-jobs 1` succeeded
+- `my-machine` now has dedicated feature modules for `kalkomey`, `npm`, `docker`, `libvirt`, and a broader workstation package/config layer
+- `fedex` and `ke` now both have Docker group membership, and `fedex` also has `libvirtd`
+- the host config now treats wheel sudo as passwordless, matching the intended VM access model
+- local flake evaluation still succeeds after the new modules were added
+- the remaining blocker for VM rebuild verification is that the current VM still prompts for sudo password over SSH until the VM-side sudo policy is updated or the first rebuild is run with elevated access
+- the workstation layer now also carries the legacy 1Password unfree predicate and a few missing dev packages (`git-lfs`, `rustc`, `python3Packages.weasyprint`)
 
 Current visual map:
 

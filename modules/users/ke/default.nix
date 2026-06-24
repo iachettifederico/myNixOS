@@ -33,7 +33,7 @@
       home = "/home/ke";
       createHome = true;
       homeMode = "700";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "docker" "networkmanager" "wheel" ];
       shell = pkgs.zsh;
       packages = with pkgs; [
         awscli2

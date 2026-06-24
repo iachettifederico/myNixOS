@@ -1,0 +1,73 @@
+{ self, inputs, ... }:
+{
+  flake.nixosModules.npm = { pkgs, ... }:
+  {
+    programs.npm.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      autoconf
+      bison
+      gcc
+      gnumake
+      gnupg
+      git
+      libyaml
+      openssl
+      pkg-config
+      python3
+      (pkgs.writeShellScriptBin "python" ''
+        exec ${pkgs.python3}/bin/python3 "$@"
+      '')
+      readline
+      zlib
+    ];
+
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc
+        zlib
+        openssl
+        libyaml
+        readline
+        gmp
+        libxcrypt
+
+        glib
+        nspr
+        nss
+        dbus
+        expat
+        libdrm
+
+        libX11
+        libXcomposite
+        libXcursor
+        libXdamage
+        libXext
+        libXfixes
+        libXi
+        libXrandr
+        libXrender
+        libXtst
+        libxcb
+
+        alsa-lib
+        at-spi2-atk
+        at-spi2-core
+        atk
+        cairo
+        cups
+        pango
+        gdk-pixbuf
+        gtk3
+        libxkbcommon
+        fontconfig
+        freetype
+
+        mesa
+        libgbm
+      ];
+    };
+  };
+}

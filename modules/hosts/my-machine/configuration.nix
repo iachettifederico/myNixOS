@@ -1,62 +1,22 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.myMachineConfiguration = { config, pkgs, ... }:
-  let
-    sudoBin = "/run/wrappers/bin/sudo";
-    keWorkspace = "/home/ke/kalkomey/repos/kelp";
-
-    keShell = pkgs.writeShellScript "ke-shell" ''
-      exec ${sudoBin} -u ke -H -- ${pkgs.zsh}/bin/zsh -lc 'cd ${keWorkspace} && exec ${pkgs.zsh}/bin/zsh -l'
-    '';
-
-    keShellGui = pkgs.writeShellScript "ke-shell-gui" ''
-      exec ${pkgs.ghostty}/bin/ghostty -e ${sudoBin} -u ke -H -- ${pkgs.zsh}/bin/zsh -lc 'cd ${keWorkspace} && exec ${pkgs.zsh}/bin/zsh -l'
-    '';
-
-    keEmacs = pkgs.writeShellScript "ke-emacs" ''
-      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.emacs}/bin/emacs "$@"
-    '';
-
-    keFirefox = pkgs.writeShellScript "ke-firefox" ''
-      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox}/bin/firefox "$@"
-    '';
-
-    keFirefoxDevedition = pkgs.writeShellScript "ke-firefox-devedition" ''
-      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.firefox-devedition}/bin/firefox-devedition "$@"
-    '';
-
-    keGhostty = pkgs.writeShellScript "ke-ghostty" ''
-      exec ${sudoBin} --preserve-env=DISPLAY,XAUTHORITY,DBUS_SESSION_BUS_ADDRESS,XDG_RUNTIME_DIR -u ke -H ${pkgs.ghostty}/bin/ghostty "$@"
-    '';
-
-    keRofi = pkgs.writeShellScript "ke-rofi" ''
-      cmd_dir=/home/fedex/bin/ke
-      choice=$(${pkgs.coreutils}/bin/printf '%s\n' \
-        ke-shell \
-        ke-emacs \
-        ke-firefox \
-        ke-firefox-devedition \
-        ke-ghostty | ${pkgs.rofi}/bin/rofi -dmenu -p ke)
-
-      test -n "$choice" || exit 0
-
-      if [ "$choice" = "ke-shell" ]; then
-        exec "$cmd_dir/ke-shell-gui"
-      fi
-
-      exec "$cmd_dir/$choice"
-    '';
-  in {
+  {
     imports = [ # Include the results of the hardware scan.
       self.nixosModules.myMachineHardware
 
       self.nixosModules.cli
       self.nixosModules.emacs
       self.nixosModules.fonts
+      self.nixosModules.kalkomey
+      self.nixosModules.npm
+      self.nixosModules.workstation
       self.nixosModules.pipewire
       self.nixosModules.ruby
       self.nixosModules.openssh
       self.nixosModules.i3
+      self.nixosModules.docker
+      self.nixosModules.libvirt
       self.nixosModules.opencode
       self.nixosModules.fedex
       self.nixosModules.sofi
@@ -83,10 +43,6 @@
 
     # Enable networking
     networking.networkmanager.enable = true;
-
-    services.xserver.displayManager.sessionCommands = ''
-      ${pkgs.xhost}/bin/xhost +SI:localuser:ke >/dev/null
-    '';
 
     # Set your time zone.
     time.timeZone = "America/Argentina/Cordoba";
@@ -115,42 +71,6 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
-    # Install firefox.
-    programs.firefox.enable = true;
-
-    programs.zsh.enable = true;
-
-    security.sudo.extraConfig = ''
-      fedex ALL=(ke) NOPASSWD:SETENV: ${pkgs.zsh}/bin/zsh, ${pkgs.emacs}/bin/emacs, ${pkgs.firefox}/bin/firefox, ${pkgs.firefox-devedition}/bin/firefox-devedition, ${pkgs.ghostty}/bin/ghostty
-    '';
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    environment.systemPackages = with pkgs; [
-
-      arandr
-      firefox-devedition
-      ghostty
-      git
-
-    ];
-
-    system.activationScripts.keLaunchers.text = ''
-      ${pkgs.coreutils}/bin/mkdir -p /home/fedex/bin/ke
-      ${pkgs.coreutils}/bin/chown fedex /home/fedex/bin /home/fedex/bin/ke
-
-      ${pkgs.coreutils}/bin/ln -sfn ${keShell} /home/fedex/bin/ke/ke-shell
-      ${pkgs.coreutils}/bin/ln -sfn ${keShellGui} /home/fedex/bin/ke/ke-shell-gui
-      ${pkgs.coreutils}/bin/ln -sfn ${keEmacs} /home/fedex/bin/ke/ke-emacs
-      ${pkgs.coreutils}/bin/ln -sfn ${keFirefox} /home/fedex/bin/ke/ke-firefox
-      ${pkgs.coreutils}/bin/ln -sfn ${keFirefoxDevedition} /home/fedex/bin/ke/ke-firefox-devedition
-      ${pkgs.coreutils}/bin/ln -sfn ${keGhostty} /home/fedex/bin/ke/ke-ghostty
-      ${pkgs.coreutils}/bin/ln -sfn ${keRofi} /home/fedex/bin/ke/ke-rofi
-    '';
-
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # programs.mtr.enable = true;
@@ -166,6 +86,8 @@
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
+
+    security.sudo.wheelNeedsPassword = false;
 
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions
