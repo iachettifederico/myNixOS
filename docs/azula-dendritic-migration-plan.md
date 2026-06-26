@@ -61,6 +61,7 @@ Current next action:
 - continue porting legacy `azula` workstation parity into reusable feature modules
 - preserve the legacy flake-level behavior for `ruby-packages`, `pkgs-master`, filtered tree-sitter grammars, and `emacs-with-grammars`
 - keep extracting concrete user and workstation boundaries so host files stop owning shared logic directly
+- keep the legacy `folly.doCheck = false` workaround noted but inactive unless a build failure proves it is still needed
 - regroup only after the VM can carry the work setup safely
 
 Current review queue for `my-machine`:
@@ -85,6 +86,15 @@ Full parity backlog for the VM-first pass:
 - VM-safe services/configuration
   - minimal service parity first
   - keep self-hosting and GPU-specific services deferred until the real `azula` host exists
+- intentionally deferred for a clean install
+  - `services.ollama`
+  - `davinci-resolve`
+  - legacy Ruby flake `packages`
+
+Current Ruby shell progress:
+
+- targeted Ruby devShells are now available again for `ruby-2-7` and `ruby-3-4`
+- the shells are meant for direnv-backed project use rather than global system installation
 
 Current verified progress:
 
@@ -111,6 +121,7 @@ Current verified progress:
 - the workstation layer now also carries the legacy 1Password unfree predicate and a few missing dev packages (`git-lfs`, `rustc`, `python3Packages.weasyprint`)
 - the `ke` workflow is now smoke-tested on the VM: the launchers are present, the workdir was created manually at `/home/ke/code/kalkomey`, and the base tools resolve for the `ke` user
 - the VM host now also matches several reference `azula` details that were still drifting: exact `fedex` UID/GID and description, passwordless wheel sudo, IP forwarding, the systemd generator workaround, autologin, and the `xrandr` primary-display session command
+- `ollama` is explicitly deferred again for the first `azula` host pass so the build stays lighter while we finish the skeleton
 
 Current visual map:
 
