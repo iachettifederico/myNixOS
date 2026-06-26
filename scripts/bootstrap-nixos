@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  printf 'usage: %s <host>\n' "${0##*/}" >&2
+}
+
+die() {
+  printf 'error: %s\n' "$*" >&2
+  exit 1
+}
+
+if [ "$#" -ne 1 ]; then
+  usage
+  exit 2
+fi
+
+host="$1"
+
+case "$host" in
+  ''|*[!A-Za-z0-9_]*)
+    die "invalid host name: $host"
+    ;;
+esac
+
+tmp_script="$(mktemp -t bootstrap-nixos.XXXXXX)"
+cleanup() {
+  rm -f "$tmp_script"
+}
+trap cleanup EXIT
+
+cat >"$tmp_script" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_url="https://github.com/iachettifederico/myNixOS.git"
+repo_dir="/etc/nixos/myNixOS"
+
+usage() {
+  printf 'usage: %s <host>\n' "${0##*/}" >&2
+}
+
+die() {
+  printf 'error: %s\n' "$*" >&2
+  exit 1
+}
+
+if [ "$#" -ne 1 ]; then
+  usage
+  exit 2
+fi
+
+host="$1"
+
+git_bin="$(command -v git)"
+nix_bin="$(command -v nix)"
+nixos_rebuild_bin="$(command -v nixos-rebuild)"
+
+if [ -n "${NIX_CONFIG-}" ]; then
+  export NIX_CONFIG="${NIX_CONFIG}
+experimental-features = nix-command flakes"
+else
+  export NIX_CONFIG="experimental-features = nix-command flakes"
+fi
+
+case "$host" in
+  ''|*[!A-Za-z0-9_]*)
+    die "invalid host name: $host"
+    ;;
+esac
+
+if [ -e "$repo_dir" ] && [ ! -d "$repo_dir/.git" ]; then
+  die "$repo_dir exists but is not a git repository"
+fi
+
+if [ -d "$repo_dir/.git" ]; then
+  if [ -n "$(sudo env NIX_CONFIG="$NIX_CONFIG" "$git_bin" -C "$repo_dir" status --porcelain)" ]; then
+    die "$repo_dir has local changes; refusing to pull"
+  fi
+
+  sudo env NIX_CONFIG="$NIX_CONFIG" "$git_bin" -C "$repo_dir" pull --ff-only
+else
+  sudo mkdir -p /etc/nixos
+  sudo env NIX_CONFIG="$NIX_CONFIG" "$git_bin" clone "$repo_url" "$repo_dir"
+fi
+
+if ! "$nix_bin" eval "$repo_dir#nixosConfigurations.\"$host\".config.networking.hostName" >/dev/null; then
+  printf 'error: invalid host flake attr: %s\n' "$host" >&2
+  printf 'available hosts: ' >&2
+  "$nix_bin" eval --json "$repo_dir#nixosConfigurations" --apply builtins.attrNames >&2
+  exit 1
+fi
+
+sudo env NIX_CONFIG="$NIX_CONFIG" "$nixos_rebuild_bin" switch --flake "$repo_dir#$host"
+EOF
+
+nix-shell -p git nixos-rebuild nix --run "bash \"$tmp_script\" \"$host\""
+status=$?
+cleanup
+exit "$status"
