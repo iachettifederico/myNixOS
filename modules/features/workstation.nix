@@ -2,6 +2,12 @@
 {
   flake.nixosModules.workstation = { pkgs, ... }:
   {
+    imports = [
+      self.nixosModules.steam
+      self.nixosModules.onepassword
+      self.nixosModules.weylus
+    ];
+
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
       "1password"
@@ -10,24 +16,6 @@
 
     programs.firefox.enable = true;
     programs.zsh.enable = true;
-
-    programs.steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-
-    programs._1password.enable = true;
-    programs._1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "fedex" ];
-    };
-
-    programs.weylus = {
-      enable = true;
-      openFirewall = true;
-      users = [ "fedex" ];
-    };
 
     environment.sessionVariables = {
       PATH = "$HOME/bin:$PATH";
