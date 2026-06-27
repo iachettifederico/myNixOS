@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1779574118.4466825,
-    "ast_hash": "33c8ad44210e556044052643c8d7ed94",
+    "mtime": 1782562842.3024771,
+    "ast_hash": "294c966e04d593a4456684d02bc78880",
     "semantic_hash": ""
   },
   "docs/azula-current-behavior.md": {
@@ -45,8 +45,13 @@
     "semantic_hash": ""
   },
   "scripts/bootstrap-nixos": {
-    "mtime": 1782500805.9006014,
-    "ast_hash": "e2fba3d8d3cec3ff09d9c91536b2fe82",
+    "mtime": 1782563910.699546,
+    "ast_hash": "08319ccbf8a184934e0648c26845e5eb",
+    "semantic_hash": ""
+  },
+  "docs/workstation-package-classification.md": {
+    "mtime": 1782567143.373594,
+    "ast_hash": "cca21403a162f8c4b36db8969de5a5cd",
     "semantic_hash": ""
   }
 }

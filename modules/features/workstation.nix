@@ -3,6 +3,8 @@
   flake.nixosModules.workstation = { pkgs, ... }:
   {
     imports = [
+      self.nixosModules.workstationBase
+      self.nixosModules.workstationDev
       self.nixosModules.steam
       self.nixosModules.onepassword
       self.nixosModules.weylus
@@ -14,33 +16,14 @@
       "1password-gui"
     ];
 
-    programs.firefox.enable = true;
-    programs.zsh.enable = true;
-
-    environment.sessionVariables = {
-      PATH = "$HOME/bin:$PATH";
-      XCURSOR_THEME = "Adwaita";
-    };
-
-    xdg.portal = {
-      enable = true;
-      config.common.default = [ "gtk" ];
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-      ];
-    };
-
     environment.systemPackages = with pkgs; [
       audacity
       brave
       cheese
       claude-code
-      cargo
-      difftastic
       discord
       docker
       docker-compose
-      entr
       evince
       feh
       ferdium
@@ -51,12 +34,10 @@
       ghostty
       gnome-calculator
       godot
-      graphviz
       hledger
       hledger-interest
       hledger-ui
       hledger-web
-      jdk21
       jellyfin
       jellyfin-desktop
       jellyfin-ffmpeg
@@ -70,8 +51,6 @@
       obs-studio
       openvpn
       pavucontrol
-      python3Packages.weasyprint
-      rustc
       git-lfs
       slack
       tangram
@@ -81,7 +60,6 @@
       transmission_4-gtk
       unzip
       vault
-      vim
       virtiofsd
       vlc
       watchman

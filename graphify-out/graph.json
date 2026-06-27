@@ -284,10 +284,20 @@
       "norm_label": "mynixos"
     },
     {
+      "label": "Remote Bootstrap",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "readme_remote_bootstrap",
+      "community": 6,
+      "norm_label": "remote bootstrap"
+    },
+    {
       "label": "Current Status",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L11",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "readme_current_status",
       "community": 6,
@@ -297,7 +307,7 @@
       "label": "Repository Layout",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L21",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "readme_repository_layout",
       "community": 6,
@@ -307,7 +317,7 @@
       "label": "Build",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L45",
+      "source_location": "L58",
       "_origin": "ast",
       "id": "readme_build",
       "community": 6,
@@ -317,7 +327,7 @@
       "label": "Workflow Notes",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L72",
       "_origin": "ast",
       "id": "readme_workflow_notes",
       "community": 6,
@@ -327,7 +337,7 @@
       "label": "Related Docs",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L66",
+      "source_location": "L79",
       "_origin": "ast",
       "id": "readme_related_docs",
       "community": 6,
@@ -1142,6 +1152,76 @@
       "id": "docs_toph_graphics_progress_known_next_step",
       "community": 3,
       "norm_label": "known next step"
+    },
+    {
+      "label": "workstation-package-classification.md",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification",
+      "community": 12,
+      "norm_label": "workstation-package-classification.md"
+    },
+    {
+      "label": "Workstation Package Classification",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification_workstation_package_classification",
+      "community": 12,
+      "norm_label": "workstation package classification"
+    },
+    {
+      "label": "Status Legend",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification_status_legend",
+      "community": 12,
+      "norm_label": "status legend"
+    },
+    {
+      "label": "Categories",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification_categories",
+      "community": 12,
+      "norm_label": "categories"
+    },
+    {
+      "label": "Inventory",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification_inventory",
+      "community": 12,
+      "norm_label": "inventory"
+    },
+    {
+      "label": "Suggested First Exports",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification_suggested_first_exports",
+      "community": 12,
+      "norm_label": "suggested first exports"
+    },
+    {
+      "label": "Notes",
+      "file_type": "document",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "docs_workstation_package_classification_notes",
+      "community": 12,
+      "norm_label": "notes"
     }
   ],
   "links": [
@@ -1394,6 +1474,16 @@
       "confidence_score": 1.0,
       "source": "readme_mynixos",
       "target": "readme_related_docs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "readme_mynixos",
+      "target": "readme_remote_bootstrap",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2194,8 +2284,68 @@
       "confidence_score": 1.0,
       "source": "docs_toph_graphics_progress_toph_graphics_progress",
       "target": "docs_toph_graphics_progress_why_this_configuration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification",
+      "target": "docs_workstation_package_classification_workstation_package_classification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification_workstation_package_classification",
+      "target": "docs_workstation_package_classification_categories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification_workstation_package_classification",
+      "target": "docs_workstation_package_classification_inventory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification_workstation_package_classification",
+      "target": "docs_workstation_package_classification_notes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification_workstation_package_classification",
+      "target": "docs_workstation_package_classification_status_legend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification_workstation_package_classification",
+      "target": "docs_workstation_package_classification_suggested_first_exports",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e6b6370690ad1ef0b0a624cc834bf39b7970f8ba"
+  "built_at_commit": "14601f9fd7424393ec217ce32ee7a0c3556bce64"
 }
