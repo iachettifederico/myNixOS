@@ -20,7 +20,7 @@
     '';
   in {
     imports = [
-      self.nixosModules.azulaHardware
+      /etc/nixos/hardware-configuration.nix
 
       self.nixosModules.cli
       self.nixosModules.emacs

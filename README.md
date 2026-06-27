@@ -2,13 +2,16 @@
 
 ## Remote Bootstrap
 
-To bootstrap a remote NixOS machine from this repo, run:
+To bootstrap a remote NixOS machine from this repo, `cd` to the parent directory where you want the checkout and run:
 
 ```bash
+cd /etc/nixos
 curl -fsSL https://raw.githubusercontent.com/iachettifederico/myNixOS/main/scripts/bootstrap-nixos | bash -s -- azula
 ```
 
 Replace `azula` with the target host name, such as `iroh`.
+
+The script clones or updates `./myNixOS` relative to the current directory, then rebuilds that host.
 
 This repo is the new NixOS configuration being built in `~/myNixOS`.
 

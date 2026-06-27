@@ -34,7 +34,7 @@ cat >"$tmp_script" <<'EOF'
 set -euo pipefail
 
 repo_url="https://github.com/iachettifederico/myNixOS.git"
-repo_dir="/etc/nixos/myNixOS"
+repo_dir="./myNixOS"
 
 usage() {
   printf 'usage: %s <host>\n' "${0##*/}" >&2
@@ -74,14 +74,13 @@ if [ -e "$repo_dir" ] && [ ! -d "$repo_dir/.git" ]; then
 fi
 
 if [ -d "$repo_dir/.git" ]; then
-  if [ -n "$(sudo env NIX_CONFIG="$NIX_CONFIG" "$git_bin" -C "$repo_dir" status --porcelain)" ]; then
+  if [ -n "$(env NIX_CONFIG="$NIX_CONFIG" "$git_bin" -C "$repo_dir" status --porcelain)" ]; then
     die "$repo_dir has local changes; refusing to pull"
   fi
 
-  sudo env NIX_CONFIG="$NIX_CONFIG" "$git_bin" -C "$repo_dir" pull --ff-only
+  env NIX_CONFIG="$NIX_CONFIG" "$git_bin" -C "$repo_dir" pull --ff-only
 else
-  sudo mkdir -p /etc/nixos
-  sudo env NIX_CONFIG="$NIX_CONFIG" "$git_bin" clone "$repo_url" "$repo_dir"
+  env NIX_CONFIG="$NIX_CONFIG" "$git_bin" clone "$repo_url" "$repo_dir"
 fi
 
 if ! "$nix_bin" eval "$repo_dir#nixosConfigurations.\"$host\".config.networking.hostName" >/dev/null; then
@@ -91,7 +90,7 @@ if ! "$nix_bin" eval "$repo_dir#nixosConfigurations.\"$host\".config.networking.
   exit 1
 fi
 
-sudo env NIX_CONFIG="$NIX_CONFIG" "$nixos_rebuild_bin" switch --flake "$repo_dir#$host"
+sudo env NIX_CONFIG="$NIX_CONFIG" "$nixos_rebuild_bin" switch --impure --flake "$repo_dir#$host"
 EOF
 
 nix-shell -p git nixos-rebuild nix --run "bash \"$tmp_script\" \"$host\""
