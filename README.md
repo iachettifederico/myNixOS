@@ -1,5 +1,15 @@
 # myNixOS
 
+## Remote Bootstrap
+
+To bootstrap a remote NixOS machine from this repo, run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/iachettifederico/myNixOS/main/scripts/bootstrap-nixos | bash -s -- azula
+```
+
+Replace `azula` with the target host name, such as `iroh`.
+
 This repo is the new NixOS configuration being built in `~/myNixOS`.
 
 It is replacing the older configuration in `~/nixos-flakes` through a VM-first migration:
