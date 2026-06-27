@@ -7,6 +7,9 @@
       self.nixosModules.cli
       self.nixosModules.emacs
       self.nixosModules.fonts
+      self.nixosModules.workstation
+      self.nixosModules.terminals
+      self.nixosModules.steam
       self.nixosModules.pipewire
       self.nixosModules.openssh
       self.nixosModules.i3
@@ -89,26 +92,11 @@
 
     services.xserver.desktopManager.cinnamon.enable = true;
 
-    # Install firefox.
-    programs.firefox.enable = true;
-
-    programs.zsh.enable = true;
-
-    programs.steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
 
       arandr
-      ghostty
       git
       blender
       godot_4

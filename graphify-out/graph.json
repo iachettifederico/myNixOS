@@ -1204,20 +1204,20 @@
       "norm_label": "inventory"
     },
     {
-      "label": "Suggested First Exports",
+      "label": "Current Top-Level Modules",
       "file_type": "document",
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L101",
       "_origin": "ast",
-      "id": "docs_workstation_package_classification_suggested_first_exports",
+      "id": "docs_workstation_package_classification_current_top_level_modules",
       "community": 12,
-      "norm_label": "suggested first exports"
+      "norm_label": "current top-level modules"
     },
     {
       "label": "Notes",
       "file_type": "document",
       "source_file": "docs/workstation-package-classification.md",
-      "source_location": "L113",
+      "source_location": "L119",
       "_origin": "ast",
       "id": "docs_workstation_package_classification_notes",
       "community": 12,
@@ -2309,6 +2309,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/workstation-package-classification.md",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "docs_workstation_package_classification_workstation_package_classification",
+      "target": "docs_workstation_package_classification_current_top_level_modules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/workstation-package-classification.md",
       "source_location": "L33",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -2334,18 +2344,8 @@
       "confidence_score": 1.0,
       "source": "docs_workstation_package_classification_workstation_package_classification",
       "target": "docs_workstation_package_classification_status_legend"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/workstation-package-classification.md",
-      "source_location": "L101",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_workstation_package_classification_workstation_package_classification",
-      "target": "docs_workstation_package_classification_suggested_first_exports"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2da8a9ddf980bf4c7174d8bfe9866f53b7853f12"
+  "built_at_commit": "2a0a512b1931000d5add0c444be1122a83e2c003"
 }

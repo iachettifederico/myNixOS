@@ -1,7 +1,7 @@
 # Graph Report - myNixOS  (2026-06-27)
 
 ## Corpus Check
-- 11 files · ~8,786 words
+- 11 files · ~8,775 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2da8a9dd`
+- Built from commit: `2a0a512b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -86,7 +86,7 @@ Nodes (6): Phase 1: Structural Migration On A VM Host First, Step 1. Capture the
 
 ### Community 12 - "Community 12"
 Cohesion: 0.29
-Nodes (6): Categories, Inventory, Notes, Status Legend, Suggested First Exports, Workstation Package Classification
+Nodes (6): Categories, Current Top-Level Modules, Inventory, Notes, Status Legend, Workstation Package Classification
 
 ## Knowledge Gaps
 - **93 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `$schema`, `model` (+88 more)

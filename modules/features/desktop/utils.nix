@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.workstationDesktopUtils = { pkgs, ... }: {
+  flake.nixosModules.desktopUtils = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       cheese
       evince

@@ -1,6 +1,6 @@
 # Workstation Package Classification
 
-Goal: split `modules/features/workstation.nix` into smaller exports, one category at a time, while keeping `myMachine` usable.
+Goal: track the workstation-to-top-level feature split while keeping `myMachine` usable.
 
 ## Status Legend
 
@@ -12,7 +12,7 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 
 ## Categories
 
-- `base`: session defaults and desktop baseline
+- `workstation`: session defaults and desktop baseline
 - `browsers`: browsers
 - `dev-browsers`: browsers used for development workflows
 - `chat`: chat and messaging apps
@@ -34,31 +34,31 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 
 | Package | Current owner | Proposed category | Status | Notes |
 | --- | --- | --- | --- | --- |
-| `programs.firefox.enable` | `workstation` | `base` | pending | Also appears in `toph`; likely host-specific in some cases. |
-| `programs.zsh.enable` | `workstation` | `base` | pending | Also appears in `toph`; keep only where needed. |
-| `environment.sessionVariables.PATH` | `workstation` | `base` | pending | Shell convenience. |
-| `environment.sessionVariables.XCURSOR_THEME` | `workstation` | `base` | pending | Desktop preference. |
-| `xdg.portal` / `xdg-desktop-portal-gtk` | `workstation` | `base` | pending | Desktop baseline. |
-| `brave` | `workstation` | `browsers` | pending | Heavy browser. |
-| `firefox-devedition` | `workstation` | `dev-browsers` | pending | Heavy browser. |
-| `discord` | `workstation` | `chat` | pending | Chat app. |
-| `ferdium` | `workstation` | `chat` | pending | Chat aggregator. |
-| `slack` | `workstation` | `chat` | pending | Work chat. |
-| `telegram-desktop` | `workstation` | `chat` | pending | Chat app. |
-| `ghostty` | `workstation` | `terminals` | pending | Terminal app. Also used by `kalkomey`. |
-| `kitty` | `workstation` | `terminals` | pending | Terminal app. |
-| `tilda` | `workstation` | `terminals` | pending | Drop-down terminal. |
-| `cheese` | `workstation` | `desktop-utils` | pending | Webcam utility. |
-| `evince` | `workstation` | `desktop-utils` | pending | Document viewer. |
-| `feh` | `workstation` | `desktop-utils` | pending | Image viewer. |
-| `flameshot` | `workstation` | `desktop-utils` | pending | Screenshot tool. |
-| `gnome-calculator` | `workstation` | `desktop-utils` | pending | Desktop utility. |
-| `libnotify` | `workstation` | `desktop-utils` | pending | Notification helper. |
-| `nemo` | `workstation` | `desktop-utils` | pending | File manager. |
-| `pavucontrol` | `workstation` | `desktop-utils` | duplicate | Already in `pipewire`. |
-| `xclip` | `workstation` | `desktop-utils` | pending | Clipboard helper. |
-| `xhost` | `workstation` | `desktop-utils` | pending | X11 access helper. Also used by `kalkomey`. |
-| `transmission_4-gtk` | `workstation` | `downloads` | pending | GUI download tool. |
+| `programs.firefox.enable` | `workstation` | `workstation` | extracted | Also appears in `toph`; likely host-specific in some cases. |
+| `programs.zsh.enable` | `workstation` | `workstation` | extracted | Also appears in `toph`; keep only where needed. |
+| `environment.sessionVariables.PATH` | `workstation` | `workstation` | extracted | Shell convenience. |
+| `environment.sessionVariables.XCURSOR_THEME` | `workstation` | `workstation` | extracted | Desktop preference. |
+| `xdg.portal` / `xdg-desktop-portal-gtk` | `workstation` | `workstation` | extracted | Desktop baseline. |
+| `brave` | `workstation` | `browsers` | extracted | Heavy browser. |
+| `firefox-devedition` | `workstation` | `browsers` | extracted | Heavy browser. |
+| `discord` | `workstation` | `chat` | extracted | Chat app. |
+| `ferdium` | `workstation` | `chat` | extracted | Chat aggregator. |
+| `slack` | `workstation` | `chat` | extracted | Work chat. |
+| `telegram-desktop` | `workstation` | `chat` | extracted | Chat app. |
+| `ghostty` | `workstation` | `terminals` | extracted | Terminal app. Also used by `kalkomey`. |
+| `kitty` | `workstation` | `terminals` | extracted | Terminal app. |
+| `tilda` | `workstation` | `terminals` | extracted | Drop-down terminal. |
+| `cheese` | `workstation` | `desktop-utils` | extracted | Webcam utility. |
+| `evince` | `workstation` | `desktop-utils` | extracted | Document viewer. |
+| `feh` | `workstation` | `desktop-utils` | extracted | Image viewer. |
+| `flameshot` | `workstation` | `desktop-utils` | extracted | Screenshot tool. |
+| `gnome-calculator` | `workstation` | `desktop-utils` | extracted | Desktop utility. |
+| `libnotify` | `workstation` | `desktop-utils` | extracted | Notification helper. |
+| `nemo` | `workstation` | `desktop-utils` | extracted | File manager. |
+| `pavucontrol` | `pipewire` | `desktop-utils` | duplicate | Already in `pipewire`. |
+| `xclip` | `workstation` | `desktop-utils` | extracted | Clipboard helper. |
+| `xhost` | `workstation` | `desktop-utils` | extracted | X11 access helper. Also used by `kalkomey`. |
+| `transmission_4-gtk` | `workstation` | `desktop-utils` | extracted | GUI download tool. |
 | `audacity` | `workstation` | `media` | extracted | Audio editor. |
 | `ffmpeg` | `workstation` | `media` | extracted | Media backend. |
 | `vlc` | `workstation` | `media` | extracted | Media player. |
@@ -98,17 +98,23 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 | `claude-code` | `workstation` | `ai` | extracted | AI assistant CLI. |
 | `opencode` | separate module | `ai` | extracted | Already exported as `opencode`. |
 
-## Suggested First Exports
+## Current Top-Level Modules
 
-1. `modules/features/workstation/base.nix` - extracted
-2. `modules/features/workstation/dev.nix` - extracted
-3. `modules/features/workstation/browsers.nix` - extracted
-4. `modules/features/workstation/chat.nix` - extracted
-5. `modules/features/workstation/terminals.nix` - extracted
-6. `modules/features/workstation/desktop-utils.nix` - extracted
-7. `modules/features/workstation/media.nix` - extracted
-8. `modules/features/workstation/streaming.nix` - extracted
-9. `modules/features/workstation/finance.nix` - extracted
+- `workstation`
+- `browsers`
+- `chat`
+- `terminals`
+- `desktopUtils`
+- `workstationDev`
+- `finance`
+- `media`
+- `streaming`
+- `claudeCode`
+- `godot`
+- `jellyfin`
+- `steam`
+- `onepassword`
+- `weylus`
 
 ## Notes
 

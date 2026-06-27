@@ -1,32 +1,26 @@
-{ self, inputs, ... }:
+{ ... }:
 {
-  flake.nixosModules.workstation = { pkgs, ... }:
-  {
-    imports = [
-      self.nixosModules.claudeCode
-      self.nixosModules.workstationBase
-      self.nixosModules.workstationDev
-      self.nixosModules.workstationBrowsers
-      self.nixosModules.workstationChat
-      self.nixosModules.workstationDesktopUtils
-      self.nixosModules.workstationFinance
-      self.nixosModules.jellyfin
-      self.nixosModules.godot
-      self.nixosModules.workstationMedia
-      self.nixosModules.workstationStreaming
-      self.nixosModules.workstationTerminals
-      self.nixosModules.steam
-      self.nixosModules.onepassword
-      self.nixosModules.weylus
-    ];
-
+  flake.nixosModules.workstation = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
       "1password"
       "1password-gui"
     ];
 
-    environment.systemPackages = with pkgs; [
-    ];
+    programs.firefox.enable = true;
+    programs.zsh.enable = true;
+
+    environment.sessionVariables = {
+      PATH = "$HOME/bin:$PATH";
+      XCURSOR_THEME = "Adwaita";
+    };
+
+    xdg.portal = {
+      enable = true;
+      config.common.default = [ "gtk" ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+      ];
+    };
   };
 }

@@ -33,6 +33,20 @@
       self.nixosModules.docker
       self.nixosModules.libvirt
       self.nixosModules.workstation
+      self.nixosModules.workstationDev
+      self.nixosModules.browsers
+      self.nixosModules.chat
+      self.nixosModules.desktopUtils
+      self.nixosModules.terminals
+      self.nixosModules.finance
+      self.nixosModules.media
+      self.nixosModules.streaming
+      self.nixosModules.claudeCode
+      self.nixosModules.godot
+      self.nixosModules.jellyfin
+      self.nixosModules.steam
+      self.nixosModules.onepassword
+      self.nixosModules.weylus
       self.nixosModules.opencode
       self.nixosModules.fedex
       self.nixosModules.ke

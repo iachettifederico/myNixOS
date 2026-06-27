@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.workstationMedia = { pkgs, ... }: {
+  flake.nixosModules.media = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       audacity
       ffmpeg

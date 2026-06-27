@@ -28,6 +28,9 @@
       self.nixosModules.kalkomey
       self.nixosModules.npm
       self.nixosModules.workstation
+      self.nixosModules.workstationDev
+      self.nixosModules.desktopUtils
+      self.nixosModules.terminals
       self.nixosModules.pipewire
       self.nixosModules.ruby
       self.nixosModules.openssh

@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.workstationFinance = { pkgs, ... }: {
+  flake.nixosModules.finance = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       hledger
       hledger-interest

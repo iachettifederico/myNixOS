@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.workstationChat = { pkgs, ... }: {
+  flake.nixosModules.chat = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       discord
       ferdium
