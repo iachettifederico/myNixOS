@@ -36,10 +36,8 @@
       self.nixosModules.openssh
       self.nixosModules.i3
       self.nixosModules.docker
-      self.nixosModules.libvirt
       self.nixosModules.opencode
       self.nixosModules.fedex
-      self.nixosModules.sofi
       self.nixosModules.ke
     ];
 
