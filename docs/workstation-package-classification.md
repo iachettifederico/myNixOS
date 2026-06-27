@@ -62,11 +62,11 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 | `audacity` | `workstation` | `media` | extracted | Audio editor. |
 | `ffmpeg` | `workstation` | `media` | extracted | Media backend. |
 | `vlc` | `workstation` | `media` | extracted | Media player. |
-| `jellyfin-ffmpeg` | `server` | `media` | pending | Media backend. |
-| `jellyfin-media-player` | `server` | `media` | pending | Client app. |
-| `jellyfin-desktop` | `server` | `media` | pending | Client app. |
-| `jellyfin` | `server` | `media` | pending | Client/app bundle. Service ownership stays in hosts. |
-| `jellyfin-web` | `server` | `media` | pending | Client app. |
+| `jellyfin-ffmpeg` | `server` | `media` | extracted | Media backend. |
+| `jellyfin-media-player` | `server` | `media` | extracted | Client app. |
+| `jellyfin-desktop` | `server` | `media` | extracted | Client app. |
+| `jellyfin` | `server` | `media` | extracted | Client/app bundle. Service ownership stays in hosts. |
+| `jellyfin-web` | `server` | `media` | extracted | Client app. |
 | `obs-studio` | `workstation` | `streaming` | extracted | Recording/streaming. |
 | `cargo` | `workstation` | `dev` | extracted | Rust toolchain helper. |
 | `difftastic` | `workstation` | `dev` | extracted | Diff tool. |
@@ -91,7 +91,7 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 | `nomad` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
 | `openvpn` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
 | `vault` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
-| `godot` | `workstation` | `gaming` | pending | Game engine. |
+| `godot` | `workstation` | `gaming` | extracted | Game engine. |
 | `steam` | `workstation` via module | `gaming` | extracted | Already exported as `steam`. |
 | `onepassword` | `workstation` via module | `security` | extracted | Already exported as `onepassword`. |
 | `weylus` | `workstation` via module | `remote-input` | extracted | Already exported as `weylus`. |

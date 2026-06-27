@@ -10,6 +10,8 @@
       self.nixosModules.workstationChat
       self.nixosModules.workstationDesktopUtils
       self.nixosModules.workstationFinance
+      self.nixosModules.jellyfin
+      self.nixosModules.godot
       self.nixosModules.workstationMedia
       self.nixosModules.workstationStreaming
       self.nixosModules.workstationTerminals
@@ -25,12 +27,6 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      godot
-      jellyfin
-      jellyfin-desktop
-      jellyfin-ffmpeg
-      jellyfin-media-player
-      jellyfin-web
     ];
   };
 }
