@@ -3,12 +3,15 @@
   flake.nixosModules.workstation = { pkgs, ... }:
   {
     imports = [
+      self.nixosModules.claudeCode
       self.nixosModules.workstationBase
       self.nixosModules.workstationDev
       self.nixosModules.workstationBrowsers
       self.nixosModules.workstationChat
       self.nixosModules.workstationDesktopUtils
+      self.nixosModules.workstationFinance
       self.nixosModules.workstationMedia
+      self.nixosModules.workstationStreaming
       self.nixosModules.workstationTerminals
       self.nixosModules.steam
       self.nixosModules.onepassword
@@ -22,32 +25,12 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      claude-code
-      docker
-      docker-compose
-      ffmpeg
       godot
-      hledger
-      hledger-interest
-      hledger-ui
-      hledger-web
       jellyfin
       jellyfin-desktop
       jellyfin-ffmpeg
       jellyfin-media-player
       jellyfin-web
-      lazydocker
-      ledger
-      obs-studio
-      openvpn
-      pavucontrol
-      git-lfs
-      unzip
-      vault
-      virtiofsd
-      watchman
-      awscli2
-      nomad
     ];
   };
 }

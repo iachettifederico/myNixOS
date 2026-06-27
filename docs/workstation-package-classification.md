@@ -59,43 +59,43 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 | `xclip` | `workstation` | `desktop-utils` | pending | Clipboard helper. |
 | `xhost` | `workstation` | `desktop-utils` | pending | X11 access helper. Also used by `kalkomey`. |
 | `transmission_4-gtk` | `workstation` | `downloads` | pending | GUI download tool. |
-| `audacity` | `workstation` | `media` | pending | Audio editor. |
-| `ffmpeg` | `workstation` | `media` | pending | Media backend. |
-| `vlc` | `workstation` | `media` | pending | Media player. |
+| `audacity` | `workstation` | `media` | extracted | Audio editor. |
+| `ffmpeg` | `workstation` | `media` | extracted | Media backend. |
+| `vlc` | `workstation` | `media` | extracted | Media player. |
 | `jellyfin-ffmpeg` | `server` | `media` | pending | Media backend. |
 | `jellyfin-media-player` | `server` | `media` | pending | Client app. |
 | `jellyfin-desktop` | `server` | `media` | pending | Client app. |
 | `jellyfin` | `server` | `media` | pending | Client/app bundle. Service ownership stays in hosts. |
 | `jellyfin-web` | `server` | `media` | pending | Client app. |
-| `obs-studio` | `workstation` | `streaming` | pending | Recording/streaming. |
-| `cargo` | `workstation` | `dev` | pending | Rust toolchain helper. |
-| `difftastic` | `workstation` | `dev` | pending | Diff tool. |
-| `entr` | `workstation` | `dev` | pending | File watcher. |
-| `graphviz` | `workstation` | `dev` | pending | Diagramming. |
-| `jdk21` | `workstation` | `dev` | pending | Java toolchain. |
-| `python3Packages.weasyprint` | `workstation` | `dev` | pending | Document rendering. |
-| `rustc` | `workstation` | `dev` | pending | Rust toolchain. |
-| `git-lfs` | `workstation` | `dev` | pending | Git extension. |
-| `unzip` | `workstation` | `dev` | pending | Archive utility. |
-| `vim` | `workstation` | `dev` | pending | Editor. |
-| `watchman` | `workstation` | `dev` | pending | File watching service. |
-| `hledger` | `workstation` | `finance` | pending | Accounting tools. |
-| `hledger-interest` | `workstation` | `finance` | pending | Accounting tools. |
-| `hledger-ui` | `workstation` | `finance` | pending | Accounting tools. |
-| `hledger-web` | `workstation` | `finance` | pending | Accounting tools. |
-| `ledger` | `workstation` | `finance` | pending | Accounting tools. |
-| `docker` | `workstation` | `ops` | duplicate | Better owned by `docker` feature. |
-| `docker-compose` | `workstation` | `ops` | duplicate | Better owned by `docker` feature. |
-| `lazydocker` | `workstation` | `ops` | pending | Docker UI. Likely belongs with Docker feature. |
-| `awscli2` | `workstation` | `ops` | duplicate | Already in `users.ke`. |
-| `nomad` | `workstation` | `ops` | duplicate | Already in `users.ke`. |
-| `openvpn` | `workstation` | `ops` | duplicate | Already in `users.ke`. |
-| `vault` | `workstation` | `ops` | duplicate | Already in `users.ke`. |
+| `obs-studio` | `workstation` | `streaming` | extracted | Recording/streaming. |
+| `cargo` | `workstation` | `dev` | extracted | Rust toolchain helper. |
+| `difftastic` | `workstation` | `dev` | extracted | Diff tool. |
+| `entr` | `workstation` | `dev` | extracted | File watcher. |
+| `graphviz` | `workstation` | `dev` | extracted | Diagramming. |
+| `jdk21` | `workstation` | `dev` | extracted | Java toolchain. |
+| `python3Packages.weasyprint` | `workstation` | `dev` | extracted | Document rendering. |
+| `rustc` | `workstation` | `dev` | extracted | Rust toolchain. |
+| `git-lfs` | `workstation` | `dev` | extracted | Git extension. |
+| `unzip` | `workstation` | `dev` | extracted | Archive utility. |
+| `vim` | `workstation` | `dev` | extracted | Editor. |
+| `watchman` | `workstation` | `dev` | extracted | File watching service. |
+| `hledger` | `workstation` | `finance` | extracted | Accounting tools. |
+| `hledger-interest` | `workstation` | `finance` | extracted | Accounting tools. |
+| `hledger-ui` | `workstation` | `finance` | extracted | Accounting tools. |
+| `hledger-web` | `workstation` | `finance` | extracted | Accounting tools. |
+| `ledger` | `workstation` | `finance` | extracted | Accounting tools. |
+| `docker` | `docker` | `ops` | extracted | Docker CLI now lives with the Docker feature. |
+| `docker-compose` | `docker` | `ops` | extracted | Docker CLI now lives with the Docker feature. |
+| `lazydocker` | `docker` | `ops` | extracted | Docker UI now lives with the Docker feature. |
+| `awscli2` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
+| `nomad` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
+| `openvpn` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
+| `vault` | `users.ke` | `ops` | duplicate | Already in `users.ke`. |
 | `godot` | `workstation` | `gaming` | pending | Game engine. |
 | `steam` | `workstation` via module | `gaming` | extracted | Already exported as `steam`. |
 | `onepassword` | `workstation` via module | `security` | extracted | Already exported as `onepassword`. |
 | `weylus` | `workstation` via module | `remote-input` | extracted | Already exported as `weylus`. |
-| `claude-code` | `workstation` | `ai` | pending | AI assistant CLI. |
+| `claude-code` | `workstation` | `ai` | extracted | AI assistant CLI. |
 | `opencode` | separate module | `ai` | extracted | Already exported as `opencode`. |
 
 ## Suggested First Exports
@@ -107,6 +107,8 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 5. `modules/features/workstation/terminals.nix` - extracted
 6. `modules/features/workstation/desktop-utils.nix` - extracted
 7. `modules/features/workstation/media.nix` - extracted
+8. `modules/features/workstation/streaming.nix` - extracted
+9. `modules/features/workstation/finance.nix` - extracted
 
 ## Notes
 

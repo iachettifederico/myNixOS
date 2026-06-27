@@ -1,8 +1,14 @@
 { self, inputs, ... }:
 {
-  flake.nixosModules.docker = { ... }:
+  flake.nixosModules.docker = { pkgs, ... }:
   {
     users.groups.docker = { };
+
+    environment.systemPackages = with pkgs; [
+      docker
+      docker-compose
+      lazydocker
+    ];
 
     virtualisation.docker.rootless = {
       enable = true;
