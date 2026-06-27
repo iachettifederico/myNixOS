@@ -102,9 +102,11 @@ Goal: split `modules/features/workstation.nix` into smaller exports, one categor
 
 1. `modules/features/workstation/base.nix` - extracted
 2. `modules/features/workstation/dev.nix` - extracted
-3. `modules/features/workstation/browsers.nix`
-4. `modules/features/workstation/chat.nix`
-5. `modules/features/workstation/media.nix`
+3. `modules/features/workstation/browsers.nix` - extracted
+4. `modules/features/workstation/chat.nix` - extracted
+5. `modules/features/workstation/terminals.nix` - extracted
+6. `modules/features/workstation/desktop-utils.nix` - extracted
+7. `modules/features/workstation/media.nix` - extracted
 
 ## Notes
 

@@ -1217,7 +1217,7 @@
       "label": "Notes",
       "file_type": "document",
       "source_file": "docs/workstation-package-classification.md",
-      "source_location": "L109",
+      "source_location": "L111",
       "_origin": "ast",
       "id": "docs_workstation_package_classification_notes",
       "community": 12,
@@ -1481,9 +1481,9 @@
       "source_file": "README.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme_mynixos",
-      "target": "readme_remote_bootstrap",
-      "confidence_score": 1.0
+      "target": "readme_remote_bootstrap"
     },
     {
       "relation": "contains",
@@ -2291,9 +2291,9 @@
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_workstation_package_classification",
-      "target": "docs_workstation_package_classification_workstation_package_classification",
-      "confidence_score": 1.0
+      "target": "docs_workstation_package_classification_workstation_package_classification"
     },
     {
       "relation": "contains",
@@ -2301,9 +2301,9 @@
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_workstation_package_classification_workstation_package_classification",
-      "target": "docs_workstation_package_classification_categories",
-      "confidence_score": 1.0
+      "target": "docs_workstation_package_classification_categories"
     },
     {
       "relation": "contains",
@@ -2311,9 +2311,9 @@
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_workstation_package_classification_workstation_package_classification",
-      "target": "docs_workstation_package_classification_inventory",
-      "confidence_score": 1.0
+      "target": "docs_workstation_package_classification_inventory"
     },
     {
       "relation": "contains",
@@ -2321,9 +2321,9 @@
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_workstation_package_classification_workstation_package_classification",
-      "target": "docs_workstation_package_classification_notes",
-      "confidence_score": 1.0
+      "target": "docs_workstation_package_classification_notes"
     },
     {
       "relation": "contains",
@@ -2331,9 +2331,9 @@
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_workstation_package_classification_workstation_package_classification",
-      "target": "docs_workstation_package_classification_status_legend",
-      "confidence_score": 1.0
+      "target": "docs_workstation_package_classification_status_legend"
     },
     {
       "relation": "contains",
@@ -2341,11 +2341,11 @@
       "source_file": "docs/workstation-package-classification.md",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_workstation_package_classification_workstation_package_classification",
-      "target": "docs_workstation_package_classification_suggested_first_exports",
-      "confidence_score": 1.0
+      "target": "docs_workstation_package_classification_suggested_first_exports"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "14601f9fd7424393ec217ce32ee7a0c3556bce64"
+  "built_at_commit": "2e390a473110b5f5a5c4243a6f3d95730966c05c"
 }

@@ -5,6 +5,11 @@
     imports = [
       self.nixosModules.workstationBase
       self.nixosModules.workstationDev
+      self.nixosModules.workstationBrowsers
+      self.nixosModules.workstationChat
+      self.nixosModules.workstationDesktopUtils
+      self.nixosModules.workstationMedia
+      self.nixosModules.workstationTerminals
       self.nixosModules.steam
       self.nixosModules.onepassword
       self.nixosModules.weylus
@@ -17,22 +22,10 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      audacity
-      brave
-      cheese
       claude-code
-      discord
       docker
       docker-compose
-      evince
-      feh
-      ferdium
       ffmpeg
-      firefox-devedition
-      flameshot
-      foliate
-      ghostty
-      gnome-calculator
       godot
       hledger
       hledger-interest
@@ -43,28 +36,16 @@
       jellyfin-ffmpeg
       jellyfin-media-player
       jellyfin-web
-      kitty
       lazydocker
       ledger
-      libnotify
-      nemo
       obs-studio
       openvpn
       pavucontrol
       git-lfs
-      slack
-      tangram
-      telegram-desktop
-      terminator
-      tilda
-      transmission_4-gtk
       unzip
       vault
       virtiofsd
-      vlc
       watchman
-      xclip
-      xhost
       awscli2
       nomad
     ];
