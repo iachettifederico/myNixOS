@@ -1,5 +1,9 @@
-{ ... }: {
+{ self, ... }: {
   flake.nixosModules.fedex = { pkgs, ... }: {
+    imports = [
+      self.nixosModules.kelp
+    ];
+
     users.users.fedex = {
       isNormalUser = true;
       description = "Federico Martín Iachetti";
