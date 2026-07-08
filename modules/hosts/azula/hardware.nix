@@ -10,61 +10,55 @@
     boot.kernelModules = [ "kvm-amd" ];
     boot.extraModulePackages = [ ];
 
-    fileSystems."/" =
-      { device = "/dev/disk/by-uuid/f85ca9d5-d6b8-4c4b-a6f8-6b715f49d48f";
-        fsType = "ext4";
-      };
-
-    fileSystems."/boot" =
-      { device = "/dev/disk/by-uuid/DA2C-A523";
-        fsType = "vfat";
-        options = [ "fmask=0077" "dmask=0077" ];
-      };
-
-    fileSystems."/home" =
-      { device = "/dev/disk/by-uuid/6a09a080-da5c-469e-a796-8acdf6c61bac";
-        fsType = "ext4";
-      };
-
-    fileSystems."/home/fedex/Data" = {
-      device = "/dev/vg-data/data";
-      fsType = "ext4";
-      options = [ "nofail" ];
+fileSystems."/" =
+    { device = "/dev/mapper/vg_main-os";
+    fsType = "ext4";
     };
 
-    fileSystems."/home/fedex/Media" = {
-      device = "/dev/vg-data/media";
-      fsType = "ext4";
-      options = [ "nofail" ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/A6DB-3131";
+    fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
     };
 
-    fileSystems."/home/fedex/Books" = {
-      device = "/dev/vg-data/books";
-      fsType = "ext4";
-      options = [ "nofail" ];
+  fileSystems."/home" =
+    { device = "/dev/mapper/vg_main-home";
+    fsType = "ext4";
     };
 
-    fileSystems."/home/fedex/Isos" = {
-      device = "/dev/vg-data/isos";
-      fsType = "ext4";
-      options = [ "nofail" ];
-    };
-
-    fileSystems."/home/fedex/.local/share/Steam" = {
-      device = "/dev/vg-main/gaming";
-      fsType = "ext4";
-      options = [ "nofail" ];
-    };
-
-    fileSystems."/home/fedex/VMs" = {
-      device = "/dev/vg-data/virtual-box-vms";
-      fsType = "ext4";
-      options = [ "nofail" ];
-    };
-
-    swapDevices = [
-      { device = "/dev/vg-main/swap"; }
+  swapDevices =
+    [ { device = "/dev/mapper/vg_main-swap"; }
     ];
+
+  fileSystems."/home/fedex/Data" = {
+    device = "/dev/vg_main/data";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  };
+
+  fileSystems."/home/fedex/Books" = {
+    device = "/dev/vg_main/books";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  };
+
+  # fileSystems."/home/fedex/Isos" = {
+  #   device = "/dev/vg-data/isos";
+  #   fsType = "ext4";
+  #   options = [ "nofail" ];
+  # };
+
+  fileSystems."/home/fedex/.local/share/Steam" = {
+    device = "/dev/vg_main/gaming";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  };
+
+  fileSystems."/home/fedex/VMs" = {
+    device = "/dev/vg_main/vms";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  };
 
     networking.useDHCP = lib.mkDefault true;
 
