@@ -2,6 +2,7 @@
   flake.nixosModules.desktopUtils = { pkgs, ... }: {
     environment.etc."xdg/flameshot/flameshot.ini".text = ''
       [General]
+      captureActiveMonitor=true
       useX11LegacyScreenshot=true
     '';
 
