@@ -38,16 +38,21 @@
     kelpPackages = with pkgs; [
       autoconf
       automake
+      awscli2
       binutils
       bison
       cargo
       curl
       file
       gcc
-      gnumake
       git
+      gnumake
       gnupg
       imagemagick
+      legacyBower
+      libX11
+      libXext
+      libXrender
       libffi
       libtool
       libxml2
@@ -56,24 +61,22 @@
       mariadb.client
       nasm
       netcat-openbsd
-      nodejs_22_14
+      nodejs_22
+      nomad
       openssh
       openssl
+      openvpn
       pkg-config
       protobuf
       python3
       readline
       rustc
-      ruby-packages."ruby-3.4.9"
       unzip
+      vault
       vim
       wget
-      libX11
-      libXext
-      libXrender
       yarn
       zlib
-      legacyBower
     ];
   in {
     users.users.fedex.packages = kelpPackages;

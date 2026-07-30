@@ -11,7 +11,6 @@
       git-lfs
       unzip
       vim
-      watchman
     ];
   };
 }

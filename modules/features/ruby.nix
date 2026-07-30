@@ -8,12 +8,22 @@
     environment.systemPackages = with pkgs; [
       bundix
       direnv
-      ruby-packages."ruby-4"
+      ruby-packages."ruby-4.0.6"
+      vips
     ];
 
     programs.zsh.interactiveShellInit = ''
       export GEM_HOME="$HOME/.local/share/gem/ruby/4.0.0"
       export PATH="$GEM_HOME/bin:$PATH"
+      export LD_LIBRARY_PATH="${lib.makeLibraryPath [
+        pkgs.gtk3
+        pkgs.pango
+        pkgs.cairo
+        pkgs.gdk-pixbuf
+        pkgs.glib
+        pkgs.atk
+        pkgs.vips
+      ]}:$LD_LIBRARY_PATH"
     '';
 
     nixpkgs.overlays = [
@@ -30,6 +40,7 @@
         ruby
         cargo
         rustc
+        vips
         libyaml
         openssl
         zlib
@@ -46,6 +57,7 @@
         export GEM_PATH="$GEM_HOME"
         export PATH="$GEM_HOME/bin:$PATH"
         export LD_LIBRARY_PATH="${lib.makeLibraryPath [
+          pkgs.vips
           pkgs.gtk3
           pkgs.pango
           pkgs.cairo
@@ -58,9 +70,14 @@
     };
   in {
     devShells = {
-      ruby-2-7 = mkRubyShell "ruby-2-7" rubyPackages."ruby-2.7.6";
-      ruby-3-4 = mkRubyShell "ruby-3-4" rubyPackages."ruby-3.4.9";
-      default = mkRubyShell "ruby-3-4" rubyPackages."ruby-3.4.9";
+      "ruby-2.7.6" = mkRubyShell "ruby-2.7.6" rubyPackages."ruby-2.7.6";
+      "ruby-3.4.9" = mkRubyShell "ruby-3.4.9" rubyPackages."ruby-3.4.9";
+      "ruby-4.0.6" = mkRubyShell "ruby-4.0.6" rubyPackages."ruby-4.0.6";
+
+      ruby-2-7 = mkRubyShell "ruby-2.7.6" rubyPackages."ruby-2.7.6";
+      ruby-3-4 = mkRubyShell "ruby-3.4.9" rubyPackages."ruby-3.4.9";
+      ruby-4 = mkRubyShell "ruby-4.0.6" rubyPackages."ruby-4.0.6";
+      default = mkRubyShell "ruby-4.0.6" rubyPackages."ruby-4.0.6";
     };
   };
 }

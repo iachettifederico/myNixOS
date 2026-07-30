@@ -578,16 +578,13 @@ Current behavior:
   - environment variables:
     - `OLLAMA_HOST = "0.0.0.0"`
     - `OLLAMA_ORIGINS = "*"`
-- `services.jellyfin`:
-  - enabled
-  - firewall opened
-  - runs as user `fedex`
 - `services.syncthing`:
   - enabled
   - user `fedex`
   - dataDir `/home/fedex/.local/share/syncthing`
   - configDir `/home/fedex/.config/syncthing`
   - opens default ports
+- `services.jellyfin` was intentionally removed from Azula in this repo; the separate Jellyfin server stays on `iroh`
 - `services.qdrant`:
   - enabled
   - HTTP on `127.0.0.1:6333`
@@ -600,7 +597,6 @@ Current behavior:
   - recommended gzip settings enabled
   - recommended optimisation enabled
   - reverse proxy virtual hosts:
-    - `jellyfin.omashu.org` -> `http://127.0.0.1:8096`
     - `kraken.omashu.org` -> `http://192.168.122.50:4568`
 - `security.acme`:
   - terms accepted

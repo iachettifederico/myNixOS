@@ -122,6 +122,7 @@ Current verified progress:
 - the `ke` workflow is now smoke-tested on the VM: the launchers are present, the workdir was created manually at `/home/ke/code/kalkomey`, and the base tools resolve for the `ke` user
 - the VM host now also matches several reference `azula` details that were still drifting: exact `fedex` UID/GID and description, passwordless wheel sudo, IP forwarding, the systemd generator workaround, autologin, and the `xrandr` primary-display session command
 - `ollama` is explicitly deferred again for the first `azula` host pass so the build stays lighter while we finish the skeleton
+- `obsidian` now lives in a small reusable `modules/features/desktop/notes.nix` module and is imported only by `azula`
 
 Current visual map:
 

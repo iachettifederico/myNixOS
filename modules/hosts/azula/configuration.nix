@@ -37,13 +37,13 @@
       self.nixosModules.browsers
       self.nixosModules.chat
       self.nixosModules.desktopUtils
+      self.nixosModules.notes
       self.nixosModules.terminals
       self.nixosModules.finance
       self.nixosModules.media
       self.nixosModules.streaming
       self.nixosModules.claudeCode
       self.nixosModules.godot
-      self.nixosModules.jellyfin
       self.nixosModules.steam
       self.nixosModules.onepassword
       self.nixosModules.weylus
@@ -140,12 +140,6 @@
       config.hardware.nvidia.package
     ];
 
-    services.jellyfin = {
-      enable = true;
-      openFirewall = true;
-      user = "fedex";
-    };
-
     services.syncthing = {
       enable = true;
       user = "fedex";
@@ -165,16 +159,6 @@
       recommendedTlsSettings = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
-
-      virtualHosts."jellyfin.omashu.org" = {
-        enableACME = true;
-        forceSSL = true;
-
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true;
-        };
-      };
 
       virtualHosts."kraken.omashu.org" = {
         enableACME = true;
