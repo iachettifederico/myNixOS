@@ -30,6 +30,7 @@
       self.nixosModules.ruby
       self.nixosModules.npm
       self.nixosModules.openssh
+      self.nixosModules.qdrant
       self.nixosModules.i3
       self.nixosModules.docker
       self.nixosModules.libvirt
@@ -199,20 +200,6 @@
         locations."/" = {
           proxyPass = "http://192.168.122.50:4568";
           proxyWebsockets = true;
-        };
-      };
-    };
-
-    services.qdrant = {
-      enable = true;
-      settings = {
-        service = {
-          host = "127.0.0.1";
-          http_port = 6333;
-          grpc_port = 6334;
-        };
-        storage = {
-          storage_path = "/var/lib/qdrant/storage";
         };
       };
     };
