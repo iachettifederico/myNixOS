@@ -36,6 +36,7 @@
       self.nixosModules.libvirt
       self.nixosModules.workstation
       self.nixosModules.workstationDev
+      self.nixosModules.vscode
       self.nixosModules.browsers
       self.nixosModules.chat
       self.nixosModules.desktopUtils
