@@ -2,6 +2,7 @@
 
   flake.nixosModules.azulaConfiguration = { config, pkgs, lib, ... }:
   let
+    virsh = "${config.virtualisation.libvirtd.package}/bin/virsh";
     systemdSystemGenerators = pkgs.runCommand "system-generators" {
       preferLocalBuild = true;
       packages = config.systemd.packages;
@@ -134,6 +135,37 @@
 
     boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
     boot.kernel.sysctl."net.ipv6.ip_forward" = 1;
+
+    systemd.services.libvirt-default-pool = {
+      description = "Ensure the default libvirt storage pool uses the VM filesystem";
+      after = [ "libvirtd.service" "home-fedex-VMs.mount" ];
+      requires = [ "libvirtd.service" "home-fedex-VMs.mount" ];
+      wantedBy = [ "multi-user.target" ];
+      path = [ pkgs.libxml2 ];
+
+      serviceConfig.Type = "oneshot";
+
+      script = ''
+        set -eu
+
+        uri=qemu:///system
+        target=/home/fedex/VMs
+
+        if ${virsh} -c "$uri" pool-info default >/dev/null 2>&1; then
+          configuredTarget="$(${virsh} -c "$uri" pool-dumpxml default | xmllint --xpath 'string(/pool/target/path)' -)"
+          if [ "$configuredTarget" != "$target" ]; then
+            echo "default libvirt pool targets $configuredTarget, expected $target" >&2
+            exit 1
+          fi
+        else
+          ${virsh} -c "$uri" pool-define-as default dir --target "$target"
+        fi
+
+        ${virsh} -c "$uri" pool-autostart default
+        ${virsh} -c "$uri" pool-start default >/dev/null 2>&1 || true
+        ${virsh} -c "$uri" pool-refresh default
+      '';
+    };
 
     environment.systemPackages = with pkgs; [
       nvtopPackages.nvidia
