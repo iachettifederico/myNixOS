@@ -51,6 +51,7 @@
       self.nixosModules.onepassword
       self.nixosModules.weylus
       self.nixosModules.opencode
+      self.nixosModules.gentleAi
       self.nixosModules.fedex
       self.nixosModules.ke
       self.nixosModules.jarvis
