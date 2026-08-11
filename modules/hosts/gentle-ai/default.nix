@@ -8,6 +8,7 @@
 
     modules = [
       self.nixosModules.myMachineConfiguration
+      self.nixosModules.gentleAi
     ];
   };
 }
