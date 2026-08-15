@@ -46,7 +46,7 @@
       self.nixosModules.media
       self.nixosModules.streaming
       self.nixosModules.claudeCode
-      self.nixosModules.godot
+      self.nixosModules.godotDevelopment
       self.nixosModules.steam
       self.nixosModules.onepassword
       self.nixosModules.weylus
