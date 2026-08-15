@@ -13,6 +13,7 @@
       self.nixosModules.pipewire
       self.nixosModules.openssh
       self.nixosModules.i3
+      self.nixosModules.gentleAi
       self.nixosModules.opencode
       self.nixosModules.fedex
       self.nixosModules.sofi

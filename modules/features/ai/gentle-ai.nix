@@ -6,12 +6,12 @@
   gentleAiRelease = system: let
     releases = {
       x86_64-linux = {
-        url = "https://github.com/Gentleman-Programming/gentle-ai/releases/download/v2.4.0-rc.6/gentle-ai_2.4.0-rc.6_linux_amd64";
-        hash = "sha256-B1hNvuFMPNWbExNBOHyPM4ESFriPPe7y0ssuHlW4MAo=";
+        url = "https://github.com/Gentleman-Programming/gentle-ai/releases/download/v2.4.0-rc.8/gentle-ai_2.4.0-rc.8_linux_amd64";
+        hash = "sha256-7imzqQ59ACs+8NK/8QgOt0Qc2ex93noqalQUC6DPPz0=";
       };
       aarch64-linux = {
-        url = "https://github.com/Gentleman-Programming/gentle-ai/releases/download/v2.4.0-rc.6/gentle-ai_2.4.0-rc.6_linux_arm64";
-        hash = "sha256-NqZ1NaIdI6LY+wJp03JZdJ9M5YrllZRPHkt+kA8izmo=";
+        url = "https://github.com/Gentleman-Programming/gentle-ai/releases/download/v2.4.0-rc.8/gentle-ai_2.4.0-rc.8_linux_arm64";
+        hash = "sha256-N7Yz42OUGastI7Hq9ljlGOVjdj+k5O12Ajfnl8/Haz4=";
       };
     };
   in
@@ -23,7 +23,7 @@ in {
     release = gentleAiRelease pkgs.stdenv.hostPlatform.system;
     gentleAi = pkgs.stdenvNoCC.mkDerivation {
       pname = "gentle-ai";
-      version = "2.4.0-rc.6";
+      version = "2.4.0-rc.8";
       src = pkgs.fetchurl release;
 
       dontUnpack = true;
