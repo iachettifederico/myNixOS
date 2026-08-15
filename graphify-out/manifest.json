@@ -53,5 +53,15 @@
     "mtime": 1782568589.7145102,
     "ast_hash": "4312646fa1203666777a80501fb542e2",
     "semantic_hash": ""
+  },
+  ".opencode/plans/1786797872770-gentle-falcon.md": {
+    "mtime": 1786797920.346054,
+    "ast_hash": "cd87c08155643bad29e26f848c202b1f",
+    "semantic_hash": ""
+  },
+  ".opencode/plans/1786804230822-neon-wizard.md": {
+    "mtime": 1786804701.6411695,
+    "ast_hash": "0a2d59bbe39fbd692a036fd07f616780",
+    "semantic_hash": ""
   }
 }

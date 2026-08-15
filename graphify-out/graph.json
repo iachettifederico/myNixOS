@@ -154,6 +154,106 @@
       "norm_label": "model"
     },
     {
+      "label": "1786797872770-gentle-falcon.md",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "plans_1786797872770_gentle_falcon",
+      "community": 14,
+      "norm_label": "1786797872770-gentle-falcon.md"
+    },
+    {
+      "label": "Gentle AI Release Check",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
+      "community": 14,
+      "norm_label": "gentle ai release check"
+    },
+    {
+      "label": "Result",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "plans_1786797872770_gentle_falcon_result",
+      "community": 14,
+      "norm_label": "result"
+    },
+    {
+      "label": "Verification",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "plans_1786797872770_gentle_falcon_verification",
+      "community": 14,
+      "norm_label": "verification"
+    },
+    {
+      "label": "1786804230822-neon-wizard.md",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "plans_1786804230822_neon_wizard",
+      "community": 13,
+      "norm_label": "1786804230822-neon-wizard.md"
+    },
+    {
+      "label": "Sofi Spanish Locale On Toph",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
+      "community": 13,
+      "norm_label": "sofi spanish locale on toph"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "plans_1786804230822_neon_wizard_goal",
+      "community": 13,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Implementation",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "plans_1786804230822_neon_wizard_implementation",
+      "community": 13,
+      "norm_label": "implementation"
+    },
+    {
+      "label": "Verification",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "plans_1786804230822_neon_wizard_verification",
+      "community": 13,
+      "norm_label": "verification"
+    },
+    {
+      "label": "Critical File",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "plans_1786804230822_neon_wizard_critical_file",
+      "community": 13,
+      "norm_label": "critical file"
+    },
+    {
       "label": "AGENTS.md",
       "file_type": "document",
       "source_file": "AGENTS.md",
@@ -1338,6 +1438,86 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "plans_1786797872770_gentle_falcon",
+      "target": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
+      "target": "plans_1786797872770_gentle_falcon_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
+      "target": "plans_1786797872770_gentle_falcon_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "plans_1786804230822_neon_wizard",
+      "target": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
+      "target": "plans_1786804230822_neon_wizard_critical_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
+      "target": "plans_1786804230822_neon_wizard_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
+      "target": "plans_1786804230822_neon_wizard_implementation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
+      "target": "plans_1786804230822_neon_wizard_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -2347,5 +2527,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d9339c7dc643b2ad68461ff7fcd96a995aaf2490"
+  "built_at_commit": "8cf55f2c3a571893a07677315934c3fdc768258c"
 }

@@ -1,16 +1,16 @@
-# Graph Report - myNixOS  (2026-08-11)
+# Graph Report - myNixOS  (2026-08-15)
 
 ## Corpus Check
-- 11 files · ~8,792 words
+- 13 files · ~9,068 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 122 nodes · 112 edges · 13 communities (11 shown, 2 thin omitted)
+- 132 nodes · 120 edges · 15 communities (13 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d9339c7d`
+- Built from commit: `8cf55f2c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,6 +27,8 @@
 - [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
 - [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Azula Current Behavior Baseline` - 28 edges
@@ -37,8 +39,8 @@
 6. `Step List` - 6 edges
 7. `Phase 1: Structural Migration On A VM Host First` - 6 edges
 8. `Workstation Package Classification` - 6 edges
-9. `Recommended Boundaries` - 4 edges
-10. `Phase 5: Add Home Manager` - 4 edges
+9. `Sofi Spanish Locale On Toph` - 5 edges
+10. `Recommended Boundaries` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -46,7 +48,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (13 total, 2 thin omitted)
+## Communities (15 total, 2 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
@@ -88,8 +90,16 @@ Nodes (6): Phase 1: Structural Migration On A VM Host First, Step 1. Capture the
 Cohesion: 0.29
 Nodes (6): Categories, Current Top-Level Modules, Inventory, Notes, Status Legend, Workstation Package Classification
 
+### Community 13 - "Community 13"
+Cohesion: 0.33
+Nodes (5): Critical File, Goal, Implementation, Sofi Spanish Locale On Toph, Verification
+
+### Community 14 - "Community 14"
+Cohesion: 0.50
+Nodes (3): Gentle AI Release Check, Result, Verification
+
 ## Knowledge Gaps
-- **93 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `$schema`, `model` (+88 more)
+- **99 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `$schema`, `model` (+94 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -97,11 +107,11 @@ Nodes (6): Categories, Current Top-Level Modules, Inventory, Notes, Status Legen
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Azula Dendritic Migration Plan` connect `Community 1` to `Community 2`, `Community 7`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+  _High betweenness centrality (0.062) - this node is a cross-community bridge._
 - **Why does `Step List` connect `Community 2` to `Community 8`, `Community 1`?**
-  _High betweenness centrality (0.072) - this node is a cross-community bridge._
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
 - **What connects `$schema`, `plugin`, `@opencode-ai/plugin` to the rest of the system?**
-  _93 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _99 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
