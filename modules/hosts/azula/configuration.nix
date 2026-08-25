@@ -23,6 +23,7 @@
     imports = [
       self.nixosModules.azulaHardware
 
+      self.nixosModules.systemStorage
       self.nixosModules.cli
       self.nixosModules.emacs
       self.nixosModules.fonts
@@ -63,7 +64,11 @@
     networking.hostName = "azula";
     networking.networkmanager.enable = true;
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      min-free = 10 * 1024 * 1024 * 1024;
+      max-free = 20 * 1024 * 1024 * 1024;
+    };
 
     time.timeZone = "America/Argentina/Cordoba";
 

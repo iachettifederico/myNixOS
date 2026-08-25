@@ -4,6 +4,26 @@
   "graph": {},
   "nodes": [
     {
+      "label": ".skill-registry.cache.json",
+      "file_type": "code",
+      "source_file": ".atl/.skill-registry.cache.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "atl_skill_registry_cache",
+      "community": 16,
+      "norm_label": ".skill-registry.cache.json"
+    },
+    {
+      "label": "fingerprint",
+      "file_type": "code",
+      "source_file": ".atl/.skill-registry.cache.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "atl_skill_registry_cache_fingerprint",
+      "community": 16,
+      "norm_label": "fingerprint"
+    },
+    {
       "label": "opencode.json",
       "file_type": "code",
       "source_file": ".opencode/opencode.json",
@@ -154,6 +174,66 @@
       "norm_label": "model"
     },
     {
+      "label": "skill-registry.md",
+      "file_type": "document",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "atl_skill_registry",
+      "community": 15,
+      "norm_label": "skill-registry.md"
+    },
+    {
+      "label": "Skill Registry \u2014 myNixOS",
+      "file_type": "document",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "atl_skill_registry_skill_registry_mynixos",
+      "community": 15,
+      "norm_label": "skill registry \u2014 mynixos"
+    },
+    {
+      "label": "Sources scanned",
+      "file_type": "document",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "atl_skill_registry_sources_scanned",
+      "community": 15,
+      "norm_label": "sources scanned"
+    },
+    {
+      "label": "Contract",
+      "file_type": "document",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "atl_skill_registry_contract",
+      "community": 15,
+      "norm_label": "contract"
+    },
+    {
+      "label": "Skills",
+      "file_type": "document",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "atl_skill_registry_skills",
+      "community": 15,
+      "norm_label": "skills"
+    },
+    {
+      "label": "Loading protocol",
+      "file_type": "document",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "atl_skill_registry_loading_protocol",
+      "community": 15,
+      "norm_label": "loading protocol"
+    },
+    {
       "label": "1786797872770-gentle-falcon.md",
       "file_type": "document",
       "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
@@ -252,6 +332,76 @@
       "id": "plans_1786804230822_neon_wizard_critical_file",
       "community": 13,
       "norm_label": "critical file"
+    },
+    {
+      "label": "1787228382479-lucky-river.md",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river",
+      "community": 8,
+      "norm_label": "1787228382479-lucky-river.md"
+    },
+    {
+      "label": "Prevent Root Filesystem Exhaustion",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "community": 8,
+      "norm_label": "prevent root filesystem exhaustion"
+    },
+    {
+      "label": "Diagnosis",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river_diagnosis",
+      "community": 8,
+      "norm_label": "diagnosis"
+    },
+    {
+      "label": "Implementation",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river_implementation",
+      "community": 8,
+      "norm_label": "implementation"
+    },
+    {
+      "label": "One-Time Cleanup",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river_one_time_cleanup",
+      "community": 8,
+      "norm_label": "one-time cleanup"
+    },
+    {
+      "label": "Verification",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river_verification",
+      "community": 8,
+      "norm_label": "verification"
+    },
+    {
+      "label": "Files",
+      "file_type": "document",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "plans_1787228382479_lucky_river_files",
+      "community": 8,
+      "norm_label": "files"
     },
     {
       "label": "AGENTS.md",
@@ -920,7 +1070,7 @@
       "source_location": "L390",
       "_origin": "ast",
       "id": "docs_azula_dendritic_migration_plan_phase_1_structural_migration_on_a_vm_host_first",
-      "community": 8,
+      "community": 2,
       "norm_label": "phase 1: structural migration on a vm host first"
     },
     {
@@ -930,7 +1080,7 @@
       "source_location": "L392",
       "_origin": "ast",
       "id": "docs_azula_dendritic_migration_plan_step_1_capture_the_current_azula_behavior",
-      "community": 8,
+      "community": 2,
       "norm_label": "step 1. capture the current `azula` behavior"
     },
     {
@@ -940,7 +1090,7 @@
       "source_location": "L420",
       "_origin": "ast",
       "id": "docs_azula_dendritic_migration_plan_step_2_create_a_thin_top_level_flake_nix",
-      "community": 8,
+      "community": 2,
       "norm_label": "step 2. create a thin top-level `flake.nix`"
     },
     {
@@ -950,7 +1100,7 @@
       "source_location": "L440",
       "_origin": "ast",
       "id": "docs_azula_dendritic_migration_plan_step_3_create_modules_parts_nix",
-      "community": 8,
+      "community": 2,
       "norm_label": "step 3. create `modules/parts.nix`"
     },
     {
@@ -960,7 +1110,7 @@
       "source_location": "L453",
       "_origin": "ast",
       "id": "docs_azula_dendritic_migration_plan_step_4_create_modules_hosts_my_machine",
-      "community": 8,
+      "community": 2,
       "norm_label": "step 4. create `modules/hosts/my-machine/`"
     },
     {
@@ -970,7 +1120,7 @@
       "source_location": "L468",
       "_origin": "ast",
       "id": "docs_azula_dendritic_migration_plan_step_5_make_the_vm_host_build_in_the_new_structure",
-      "community": 8,
+      "community": 2,
       "norm_label": "step 5. make the vm host build in the new structure"
     },
     {
@@ -1328,6 +1478,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".atl/.skill-registry.cache.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "atl_skill_registry_cache",
+      "target": "atl_skill_registry_cache_fingerprint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".opencode/opencode.json",
       "source_location": "L3",
       "weight": 1.0,
@@ -1438,12 +1598,62 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "atl_skill_registry",
+      "target": "atl_skill_registry_skill_registry_mynixos",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "atl_skill_registry_skill_registry_mynixos",
+      "target": "atl_skill_registry_contract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "atl_skill_registry_skill_registry_mynixos",
+      "target": "atl_skill_registry_loading_protocol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "atl_skill_registry_skill_registry_mynixos",
+      "target": "atl_skill_registry_skills",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".atl/skill-registry.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "atl_skill_registry_skill_registry_mynixos",
+      "target": "atl_skill_registry_sources_scanned",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786797872770_gentle_falcon",
-      "target": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
-      "confidence_score": 1.0
+      "target": "plans_1786797872770_gentle_falcon_gentle_ai_release_check"
     },
     {
       "relation": "contains",
@@ -1451,9 +1661,9 @@
       "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
-      "target": "plans_1786797872770_gentle_falcon_result",
-      "confidence_score": 1.0
+      "target": "plans_1786797872770_gentle_falcon_result"
     },
     {
       "relation": "contains",
@@ -1461,9 +1671,9 @@
       "source_file": ".opencode/plans/1786797872770-gentle-falcon.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786797872770_gentle_falcon_gentle_ai_release_check",
-      "target": "plans_1786797872770_gentle_falcon_verification",
-      "confidence_score": 1.0
+      "target": "plans_1786797872770_gentle_falcon_verification"
     },
     {
       "relation": "contains",
@@ -1471,9 +1681,9 @@
       "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786804230822_neon_wizard",
-      "target": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
-      "confidence_score": 1.0
+      "target": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph"
     },
     {
       "relation": "contains",
@@ -1481,9 +1691,9 @@
       "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
-      "target": "plans_1786804230822_neon_wizard_critical_file",
-      "confidence_score": 1.0
+      "target": "plans_1786804230822_neon_wizard_critical_file"
     },
     {
       "relation": "contains",
@@ -1491,9 +1701,9 @@
       "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
-      "target": "plans_1786804230822_neon_wizard_goal",
-      "confidence_score": 1.0
+      "target": "plans_1786804230822_neon_wizard_goal"
     },
     {
       "relation": "contains",
@@ -1501,9 +1711,9 @@
       "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
-      "target": "plans_1786804230822_neon_wizard_implementation",
-      "confidence_score": 1.0
+      "target": "plans_1786804230822_neon_wizard_implementation"
     },
     {
       "relation": "contains",
@@ -1511,8 +1721,68 @@
       "source_file": ".opencode/plans/1786804230822-neon-wizard.md",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_1786804230822_neon_wizard_sofi_spanish_locale_on_toph",
-      "target": "plans_1786804230822_neon_wizard_verification",
+      "target": "plans_1786804230822_neon_wizard_verification"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "plans_1787228382479_lucky_river",
+      "target": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "target": "plans_1787228382479_lucky_river_diagnosis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "target": "plans_1787228382479_lucky_river_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "target": "plans_1787228382479_lucky_river_implementation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "target": "plans_1787228382479_lucky_river_one_time_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/plans/1787228382479-lucky-river.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "plans_1787228382479_lucky_river_prevent_root_filesystem_exhaustion",
+      "target": "plans_1787228382479_lucky_river_verification",
       "confidence_score": 1.0
     },
     {
@@ -2527,5 +2797,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8cf55f2c3a571893a07677315934c3fdc768258c"
+  "built_at_commit": "968204544279edfca58da725437f0024921ec2f6"
 }

@@ -63,5 +63,20 @@
     "mtime": 1786804701.6411695,
     "ast_hash": "0a2d59bbe39fbd692a036fd07f616780",
     "semantic_hash": ""
+  },
+  ".atl/.skill-registry.cache.json": {
+    "mtime": 1787228327.4769685,
+    "ast_hash": "140d57e89bd6208367468a890be6b67e",
+    "semantic_hash": ""
+  },
+  ".atl/skill-registry.md": {
+    "mtime": 1787228327.4749684,
+    "ast_hash": "bc62c696eec30f5b627fb2e60b195a46",
+    "semantic_hash": ""
+  },
+  ".opencode/plans/1787228382479-lucky-river.md": {
+    "mtime": 1787229151.2162602,
+    "ast_hash": "18c108fdc80cc85bc0e7bbfebe86ab89",
+    "semantic_hash": ""
   }
 }

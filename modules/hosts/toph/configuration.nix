@@ -4,6 +4,7 @@
     imports = [ # Include the results of the hardware scan.
       self.nixosModules.tophHardware
 
+      self.nixosModules.systemStorage
       self.nixosModules.cli
       self.nixosModules.emacs
       self.nixosModules.fonts
