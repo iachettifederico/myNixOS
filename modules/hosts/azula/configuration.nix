@@ -22,6 +22,7 @@
   in {
     imports = [
       self.nixosModules.azulaHardware
+      self.nixosModules.azulaDeck8Udev
 
       self.nixosModules.systemStorage
       self.nixosModules.cli
