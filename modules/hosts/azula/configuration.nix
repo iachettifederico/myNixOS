@@ -53,6 +53,7 @@
       self.nixosModules.steam
       self.nixosModules.onepassword
       self.nixosModules.weylus
+      self.nixosModules.wayland
       self.nixosModules.opencode
       self.nixosModules.pi
       self.nixosModules.gentleAi
