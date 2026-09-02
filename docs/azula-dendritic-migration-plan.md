@@ -139,7 +139,6 @@ flowchart TD
     FE --> I3["desktop/i3"]
     FE --> SSH["services/openssh"]
     FE --> OC["ai/opencode"]
-    FE --> NI["niri<br/>perSystem package"]
 
     HO --> MM["my-machine<br/>VM proving host"]
     HO --> TO["toph<br/>real dendritic host"]
@@ -249,7 +248,6 @@ Examples of future custom output names:
 
 - `packages.fdxEmacs`
 - `packages.fdxGhostty`
-- `packages.fdxNiri`
 
 ## Recommended Boundaries
 

@@ -28,7 +28,6 @@
   - `modules/features/cli.nix`
   - `modules/features/desktop/i3.nix`
   - `modules/features/ai/opencode.nix`
-- `modules/features/niri.nix` is a different pattern: it exports a wrapped package via `perSystem`, not a reusable NixOS module.
 
 ## Naming Conventions
 
