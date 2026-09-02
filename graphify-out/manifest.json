@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1782316088.6738217,
-    "ast_hash": "d98d51ca0b4d22f90e458e90bc9da22a",
+    "mtime": 1788351345.2139225,
+    "ast_hash": "2338800047fbd883a0cbe327edf64fe8",
     "semantic_hash": ""
   },
   "README.md": {
@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "docs/azula-dendritic-migration-plan.md": {
-    "mtime": 1786032095.474504,
-    "ast_hash": "c89ef5ceda31e7c8e7e88218cfe602de",
+    "mtime": 1788357708.2981067,
+    "ast_hash": "51c4fcfe8d59bc86a78d11d4fd33f5d0",
     "semantic_hash": ""
   },
   "docs/toph-graphics-progress.md": {
@@ -77,6 +77,21 @@
   ".opencode/plans/1787228382479-lucky-river.md": {
     "mtime": 1787229151.2162602,
     "ast_hash": "18c108fdc80cc85bc0e7bbfebe86ab89",
+    "semantic_hash": ""
+  },
+  ".opencode/plans/1787691935729-witty-garden.md": {
+    "mtime": 1787692031.5245361,
+    "ast_hash": "4a720acbe8e1b51788d1b417b65772cd",
+    "semantic_hash": ""
+  },
+  ".opencode/plans/1788179971780-mighty-island.md": {
+    "mtime": 1788181209.1749036,
+    "ast_hash": "9cf2ddbb5689fa99180b562125c8a20f",
+    "semantic_hash": ""
+  },
+  "modules/features/desktop/qtile/config.py": {
+    "mtime": 1788361989.91828,
+    "ast_hash": "d7b2e7a115ff1ffe8dae861fe46e3467",
     "semantic_hash": ""
   }
 }

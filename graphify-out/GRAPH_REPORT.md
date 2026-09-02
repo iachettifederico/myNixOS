@@ -1,16 +1,16 @@
-# Graph Report - myNixOS  (2026-08-20)
+# Graph Report - myNixOS  (2026-09-02)
 
 ## Corpus Check
-- 16 files · ~10,347 words
+- 17 files · ~10,814 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 147 nodes · 132 edges · 17 communities (14 shown, 3 thin omitted)
+- 160 nodes · 146 edges · 18 communities (16 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `96820454`
+- Built from commit: `0b80aede`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,6 +31,7 @@
 - [[_COMMUNITY_Community 14|Community 14]]
 - [[_COMMUNITY_Community 15|Community 15]]
 - [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Azula Current Behavior Baseline` - 28 edges
@@ -42,7 +43,7 @@
 7. `Step List` - 6 edges
 8. `Phase 1: Structural Migration On A VM Host First` - 6 edges
 9. `Workstation Package Classification` - 6 edges
-10. `Skill Registry — myNixOS` - 5 edges
+10. `Sofi Spanish Locale On Toph` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -50,15 +51,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (17 total, 3 thin omitted)
+## Communities (18 total, 2 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
 Nodes (28): Audio, Azula Current Behavior Baseline, Boot, Current NixOS Module List, Custom Emacs Build, Desktop Stack, Docker And Container Behavior, Enabled Programs (+20 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.14
-Nodes (13): Azula Dendritic Migration Plan, Current Status, Decision Summary, Features, Goal, Hosts, Migration Strategy, Recommended Boundaries (+5 more)
+Cohesion: 0.13
+Nodes (14): Azula Dendritic Migration Plan, Current Status, Decision Summary, Features, Goal, Hosts, Migration Strategy, Qtile experiment on `azula` (+6 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.10
@@ -102,25 +103,33 @@ Nodes (3): Gentle AI Release Check, Result, Verification
 
 ### Community 15 - "Community 15"
 Cohesion: 0.33
-Nodes (5): Contract, Loading protocol, Skill Registry — myNixOS, Skills, Sources scanned
+Nodes (5): Files, Goal, Implementation, Nested Sway Test Plan, Verification
+
+### Community 16 - "Community 16"
+Cohesion: 0.32
+Nodes (7): generate_screens(), make_screen(), move_workspace_to_adjacent_screen(), Give each detected output its own Qtile screen and widget instances., Focus an occupied visible workspace; otherwise show it on this screen., Move the current workspace to the next physical screen and follow it., show_workspace()
+
+### Community 17 - "Community 17"
+Cohesion: 0.33
+Nodes (5): Change Groups, Important State, Outstanding Changes Audit, Result, Verification
 
 ## Knowledge Gaps
-- **109 isolated node(s):** `fingerprint`, `$schema`, `plugin`, `@opencode-ai/plugin`, `$schema` (+104 more)
+- **112 isolated node(s):** `$schema`, `plugin`, `@opencode-ai/plugin`, `$schema`, `model` (+107 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Azula Dendritic Migration Plan` connect `Community 1` to `Community 2`, `Community 7`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Why does `Step List` connect `Community 2` to `Community 1`?**
-  _High betweenness centrality (0.049) - this node is a cross-community bridge._
-- **What connects `fingerprint`, `$schema`, `plugin` to the rest of the system?**
-  _109 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
+- **What connects `$schema`, `plugin`, `@opencode-ai/plugin` to the rest of the system?**
+  _114 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.1 - nodes in this community are weakly interconnected._
