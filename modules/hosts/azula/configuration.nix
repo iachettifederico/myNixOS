@@ -34,6 +34,7 @@
       self.nixosModules.openssh
       self.nixosModules.qdrant
       self.nixosModules.i3
+      self.nixosModules.azulaComicbookI3
       self.nixosModules.docker
       self.nixosModules.libvirt
       self.nixosModules.workstation
