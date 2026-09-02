@@ -53,6 +53,7 @@
       self.nixosModules.onepassword
       self.nixosModules.weylus
       self.nixosModules.opencode
+      self.nixosModules.pi
       self.nixosModules.gentleAi
       self.nixosModules.fedex
       self.nixosModules.ke
