@@ -103,6 +103,9 @@
       Option "TripleBuffer" "on"
     '';
 
+    # NVIDIA EDID-derived DPI is too high for this mixed-DPI layout.
+    services.xserver.dpi = 96;
+
     services.xserver.displayManager.sessionCommands = ''
       ${pkgs.xrandr}/bin/xrandr --output DP-0 --primary
     '';
