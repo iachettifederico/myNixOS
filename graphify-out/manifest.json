@@ -1,7 +1,7 @@
 {
   "opencode.json": {
-    "mtime": 1782313789.3920279,
-    "ast_hash": "af3a776a9874b955f054346b159cbfcf",
+    "mtime": 1788619702.6205523,
+    "ast_hash": "ee9471b8a2d2f0501de8cab5feba9ee3",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -20,7 +20,7 @@
     "semantic_hash": ""
   },
   "docs/azula-dendritic-migration-plan.md": {
-    "mtime": 1788357708.2981067,
+    "mtime": 1788382074.8655388,
     "ast_hash": "51c4fcfe8d59bc86a78d11d4fd33f5d0",
     "semantic_hash": ""
   },
@@ -90,8 +90,18 @@
     "semantic_hash": ""
   },
   "modules/features/desktop/qtile/config.py": {
-    "mtime": 1788361989.91828,
-    "ast_hash": "d7b2e7a115ff1ffe8dae861fe46e3467",
+    "mtime": 1788450214.610296,
+    "ast_hash": "87e56c76dde074b5b759fc2048cebae4",
+    "semantic_hash": ""
+  },
+  "modules/features/desktop/qtile/traverse.py": {
+    "mtime": 1788443230.9943383,
+    "ast_hash": "5d9e062c0aad183585b51b0ba2cc8639",
+    "semantic_hash": ""
+  },
+  ".gentle-ai-default-agent.json": {
+    "mtime": 1788619702.5585518,
+    "ast_hash": "1b8effd6b26c000c763ecaf631c91011",
     "semantic_hash": ""
   }
 }
