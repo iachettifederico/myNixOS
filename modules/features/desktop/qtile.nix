@@ -9,5 +9,7 @@
       });
       configFile = ./qtile/config.py;
     };
+
+    environment.etc."xdg/qtile/traverse.py".source = ./qtile/traverse.py;
   };
 }
