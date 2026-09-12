@@ -124,14 +124,6 @@ Current verified progress:
 - `ollama` is explicitly deferred again for the first `azula` host pass so the build stays lighter while we finish the skeleton
 - `obsidian` now lives in a small reusable `modules/features/desktop/notes.nix` module and is imported only by `azula`
 
-### Qtile experiment on `azula`
-
-- `azula` imports the reusable `flake.nixosModules.qtile`; `my-machine` and `toph` do not
-- the pinned Qtile 0.37.0 NixOS module exposes both X11 and Wayland sessions through SDDM, backed by one neutral starter config at `/etc/xdg/qtile/config.py`
-- i3 remains the default session (`none+i3`); Qtile is an opt-in experiment, not a desktop migration
-- Qtile's Wayland backend on NVIDIA remains an acknowledged runtime risk, so the X11 and i3 paths must remain available
-- visual styling is intentionally minimal until the future comic-book theme is designed
-
 Current visual map:
 
 ```mermaid

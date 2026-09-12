@@ -34,7 +34,6 @@
       self.nixosModules.openssh
       self.nixosModules.qdrant
       self.nixosModules.i3
-      self.nixosModules.qtile
       self.nixosModules.azulaComicbookI3
       self.nixosModules.docker
       self.nixosModules.libvirt
@@ -54,7 +53,6 @@
       self.nixosModules.steam
       self.nixosModules.onepassword
       self.nixosModules.weylus
-      self.nixosModules.wayland
       self.nixosModules.opencode
       self.nixosModules.pi
       self.nixosModules.gentleAi
